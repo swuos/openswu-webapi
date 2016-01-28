@@ -8,5 +8,6 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="commons-codec-1.9" level="application" />
+    <orderEntry type="library" name="gson-2.3.1" level="application" />
   </component>
 </module>

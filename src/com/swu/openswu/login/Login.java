@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by csd on 2016/1/27.
  */
-public class LoginPortal {
+public class Login {
 
     //    校内门户地址
     private static final String urlUrp = "http://urp6.swu.edu.cn/login.portal";
@@ -41,5 +41,7 @@ public class LoginPortal {
         return this.client.doPost(urlLogin, nameValuePairs);
     }
 
-
+    public Client getClient() {
+        return client;
+    }
 }
