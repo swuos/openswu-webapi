@@ -5,5 +5,15 @@ package com.swu.openswu.jwxt;
  */
 public interface GradeHandler {
 
+    /**
+     * 计算GPA
+     */
+    public double getGPA(TotalInfo TotalInfo);
+
+    /**
+     * 计算学分总和
+     */
+    public double getSum();
+
 
 }
