@@ -29,7 +29,7 @@ public interface Lookup {
      * @param xqm       学期
      * @param TotalInfo 存储信息的对象
      */
-    public void lookup(int xnm, int xqm, TotalInfo TotalInfo);
+    public void lookup(int xnm, int xqm, TotalInfo TotalInfo) throws Exception;
 
 
 }
