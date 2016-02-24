@@ -99,15 +99,13 @@ public abstract class GradesHelper implements GradeHandler, Lookup {
         nameValuePair.add(new BasicNameValuePair("queryModel.showCount", "30"));
         nameValuePair.add(new BasicNameValuePair("queryModel.sortName", ""));
         nameValuePair.add(new BasicNameValuePair("queryModel.sortOrder", "asc"));
-        nameValuePair.add(new BasicNameValuePair("time", "0"));
+        nameValuePair.add(new BasicNameValuePair("time", "1"));
         nameValuePair.add(new BasicNameValuePair("xnm", "2015"));
-        nameValuePair.add(new BasicNameValuePair("xqm", "3"));
+        nameValuePair.add(new BasicNameValuePair("xqm", "1"));
 
         String response = this.client.doPost(Constant.urlGradeSearch + "222014321210033", nameValuePair);
 
         if (!response.contains(Constant.NO_NET)) {
-            /*因为获得数据前面有一个"null"所以对获得的内容进行整理*/
-            response = response.substring(4);
             /*构建gson数据来解析json数据*/
             Gson gson = new Gson();
             totalInfo.setGrades(gson.fromJson(response, GradeData.class));
