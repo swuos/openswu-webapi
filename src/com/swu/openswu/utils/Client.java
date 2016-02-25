@@ -125,4 +125,12 @@ public class Client {
 
 
     }
+
+
+    public String getPost() {
+
+
+        return null;
+    }
+
 }

@@ -19,8 +19,11 @@ public class Login {
     private Client client = new Client();
     private String response = null;
     private TotalInfo totalInfo = new TotalInfo();
-    public Login(String name, String password) {
-        this.response = this.doLogin(name, password);
+    private String swuID;
+
+    public Login(String swuID, String password) {
+        totalInfo.setSwuID(swuID);
+        this.response = this.doLogin(swuID, password);
     }
 
     private String doLogin(String name, String password) {
@@ -52,16 +55,7 @@ public class Login {
     }
 
     private String setBasicInfo(TotalInfo totalInfo, Client client) {
-        /*获得学号*/
-        String respones = client.doGet("http://jw.swu.edu.cn/jwglxt/xtgl/index_initMenu.html");
-        /*判断是否正确获得结果*/
-        if (!respones.contains(Constant.NO_NET)) {
-            /*对结果进行切割获得学号*/
-            String swuidtmple = respones.substring(respones.indexOf("UserKey\" value=\""));
-            /*将结果保存进totalInfo*/
-            totalInfo.setSwuID(swuidtmple.substring(16, 31));
-        } else
-            return respones;
+
         /*获得姓名*/
         String response1 = client.doGet("http://jw.swu.edu.cn/jwglxt/xtgl/index_cxYhxxIndex.html?xt=jw&gnmkdmKey=index&sessionUserKey=" + totalInfo.getSwuID());
 

@@ -96,14 +96,14 @@ public abstract class GradesHelper implements GradeHandler, Lookup {
         nameValuePair.add(new BasicNameValuePair("_search", "false"));
         nameValuePair.add(new BasicNameValuePair("nd", "1451922678091"));
         nameValuePair.add(new BasicNameValuePair("queryModel.currentPage", "1"));
-        nameValuePair.add(new BasicNameValuePair("queryModel.showCount", "30"));
+        nameValuePair.add(new BasicNameValuePair("queryModel.showCount", "100"));
         nameValuePair.add(new BasicNameValuePair("queryModel.sortName", ""));
         nameValuePair.add(new BasicNameValuePair("queryModel.sortOrder", "asc"));
         nameValuePair.add(new BasicNameValuePair("time", "1"));
-        nameValuePair.add(new BasicNameValuePair("xnm", "2015"));
-        nameValuePair.add(new BasicNameValuePair("xqm", "1"));
+        nameValuePair.add(new BasicNameValuePair("xnm", "" + xnm));
+        nameValuePair.add(new BasicNameValuePair("xqm", "" + xqm));
 
-        String response = this.client.doPost(Constant.urlGradeSearch + "222014321210033", nameValuePair);
+        String response = this.client.doPost(Constant.urlGradeSearch + totalInfo.getSwuID(), nameValuePair);
 
         if (!response.contains(Constant.NO_NET)) {
             /*构建gson数据来解析json数据*/
@@ -115,4 +115,10 @@ public abstract class GradesHelper implements GradeHandler, Lookup {
 
 
     }
+
+    private void setConstPair(List<NameValuePair> nameValuePairs) {
+
+    }
+
+
 }
