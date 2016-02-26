@@ -20,8 +20,6 @@ public class Server {
                 Thread t = new Thread(r);
                 t.start();
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
