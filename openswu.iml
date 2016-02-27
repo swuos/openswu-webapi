@@ -9,6 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="commons-codec-1.9" level="project" />
     <orderEntry type="library" name="gson-2.3.1" level="project" />
-    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="javax.servlet" level="project" />
+    <orderEntry type="library" name="jetty" level="project" />
   </component>
 </module>
