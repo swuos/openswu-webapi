@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="socketServer">
+    <output-path>$PROJECT_DIR$/out/artifacts/socketServer</output-path>
+    <root id="archive" name="socketServer.jar">
+      <element id="library" level="project" name="commons-codec-1.9" />
+      <element id="library" level="project" name="gson-2.3.1" />
+      <element id="library" level="project" name="javax.servlet" />
+      <element id="module-output" name="openswu" />
+    </root>
+  </artifact>
+</component>

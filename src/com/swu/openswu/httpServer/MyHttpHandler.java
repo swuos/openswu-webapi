@@ -53,17 +53,18 @@ public class MyHttpHandler implements HttpHandler {
             grades里面存放着所查询的成绩信息
             把成绩放到map里面等一下方便转换为json数据
              */
-            HashMap<String, String> responseMap = new HashMap<>();
-            int i = 1;
-            for (GradeData.Items item :
-                    grades.getItems()) {
-                responseMap.put("kcmc" + i, item.getKcmc());
-                responseMap.put("Cj" + i, item.getCj());
-                responseMap.put("Jd" + i, item.getJd());
-                responseMap.put("Xf" + i, item.getXf());
-                ++i;
-            }
-            String responseBody = jsonHandler.toJson(responseMap);
+//            HashMap<String, String> responseMap = new HashMap<>();
+//            int i = 1;
+//            for (GradeData.Items item :
+//                    grades.getItems()) {
+//                responseMap.put("kcmc" + i, item.getKcmc());
+//                responseMap.put("Cj" + i, item.getCj());
+//                responseMap.put("Jd" + i, item.getJd());
+//                responseMap.put("Xf" + i, item.getXf());
+//                ++i;
+//            }
+//            String responseBody = jsonHandler.toJson(responseMap);
+            String responseBody = jsonHandler.toJson(grades);
             System.out.println(responseBody);
 
         } catch (Exception e) {

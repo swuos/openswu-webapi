@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -41,23 +40,32 @@ public class ThreadedHandler implements Runnable {
             Scanner in = new Scanner(inStream);
             PrintWriter out = new PrintWriter(outStream, true);
 
+            out.println("请输入   SEARCH  进入成绩查询");
 
             boolean done = false;
 
             while (!done && in.hasNext()) {
                 String line = in.nextLine();
-
                 if (line.trim().equals("BYE")) {
                     break;
                 }
-                System.out.println(line);
-                if (line.equals("1")) {
-                    String swuID = in.nextLine();
-                    if (line.trim().equals("BYE")) {
+                if (line.equals("SEARCH")) {
+
+                    out.println("进入查询，请依次输入： 学号 密码 查询的学年数 查询的学期数 您还可以随时输入BYE退出 输入SEARCH再次查询");
+                    String swuID = in.nextLine().trim();
+                    if (swuID.equals("BYE")) {
                         break;
                     }
-                    String password = in.nextLine();
-                    if (line.trim().equals("BYE")) {
+                    String password = in.nextLine().trim();
+                    if (password.equals("BYE")) {
+                        break;
+                    }
+                    String xnm = in.nextLine().trim();
+                    if (xnm.equals("BYE")) {
+                        break;
+                    }
+                    String xqm = in.nextLine().trim();
+                    if (xqm.equals("BYE")) {
                         break;
                     }
 
@@ -69,7 +77,7 @@ public class ThreadedHandler implements Runnable {
 
                     try {
 
-                        swuGrades.lookup(2015, 1, totalInfo);
+                        swuGrades.lookup(Integer.valueOf(xnm), Integer.valueOf(xqm), totalInfo);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -78,22 +86,14 @@ public class ThreadedHandler implements Runnable {
                     GradeData grades = totalInfo.getGrades();
 
                     JsonHandler jsonHandler = new JsonHandler();
-                    HashMap<String, String> map = new HashMap<>();
-                    int i = 1;
+
                     for (GradeData.Items item :
                             grades.getItems()) {
-//                        out.println(item.getKcmc());
-//                        out.println(item.getCj());
-//                        out.println(item.getJd());
-//                        out.println(item.getXf());
-
-                        map.put("kcmc" + i, item.getKcmc());
-                        map.put("Cj" + i, item.getCj());
-                        map.put("Jd" + i, item.getJd());
-                        map.put("Xf" + i, item.getXf());
-                        ++i;
+                        out.println(item.getKcmc());
+                        out.println(item.getCj());
+                        out.println(item.getJd());
+                        out.println(item.getXf());
                     }
-                    out.println(jsonHandler.toJson(map));
                 }
 
             }
