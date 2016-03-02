@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/1/30.
+ * Created by 陈思定 on 2016/1/30.
  */
 public class GradesLookuper implements Lookup {
 
@@ -20,7 +20,6 @@ public class GradesLookuper implements Lookup {
     }
 
     public GradesLookuper() {
-
 
     }
 
