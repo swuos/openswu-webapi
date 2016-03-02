@@ -7,7 +7,9 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Created by csd on 2016/2/27.
@@ -31,7 +33,13 @@ public class Test {
         HttpResponse response = null;
         response = httpClient.execute(httpPost);
 
-        System.out.println(response.getEntity());
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+        String str;
+        if ((str = bufferedReader.readLine()) != null) {
+            System.out.println(str);
+        }
+        bufferedReader.close();
+
 
 
     }

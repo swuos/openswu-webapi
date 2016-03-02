@@ -8,9 +8,8 @@ import com.swu.openswu.jwxt.TotalInfo;
 import com.swu.openswu.login.Login;
 import com.swu.openswu.utils.JsonHandler;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 
 /**
@@ -29,6 +28,7 @@ public class MyHttpHandler implements HttpHandler {
             requestBody.append(line);
         }
         if (requestBody.equals("")) return;
+        bufferedReader.close();
 
         JsonHandler jsonHandler = new JsonHandler();
         //把请求的json转换为map
@@ -53,19 +53,15 @@ public class MyHttpHandler implements HttpHandler {
             grades里面存放着所查询的成绩信息
             把成绩放到map里面等一下方便转换为json数据
              */
-//            HashMap<String, String> responseMap = new HashMap<>();
-//            int i = 1;
-//            for (GradeData.Items item :
-//                    grades.getItems()) {
-//                responseMap.put("kcmc" + i, item.getKcmc());
-//                responseMap.put("Cj" + i, item.getCj());
-//                responseMap.put("Jd" + i, item.getJd());
-//                responseMap.put("Xf" + i, item.getXf());
-//                ++i;
-//            }
-//            String responseBody = jsonHandler.toJson(responseMap);
+
             String responseBody = jsonHandler.toJson(grades);
             System.out.println(responseBody);
+
+            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, responseBody.getBytes().length);
+            BufferedWriter responseWriter = new BufferedWriter(new OutputStreamWriter(httpExchange.getResponseBody()));
+            responseWriter.write(responseBody.toString());
+            responseWriter.close();
+
 
         } catch (Exception e) {
             /*
