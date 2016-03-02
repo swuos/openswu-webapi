@@ -5,7 +5,9 @@ import com.sun.net.httpserver.spi.HttpServerProvider;
 
 import java.net.InetSocketAddress;
 
-
+/**
+ * 服务器启动类。
+ */
 public class Server {
 
 

@@ -57,15 +57,15 @@ public class Login {
     private String setBasicInfo(TotalInfo totalInfo, Client client) {
 
         /*获得姓名*/
-        String response1 = client.doGet("http://jw.swu.edu.cn/jwglxt/xtgl/index_cxYhxxIndex.html?xt=jw&gnmkdmKey=index&sessionUserKey=" + totalInfo.getSwuID());
+        String response = client.doGet("http://jw.swu.edu.cn/jwglxt/xtgl/index_cxYhxxIndex.html?xt=jw&gnmkdmKey=index&sessionUserKey=" + totalInfo.getSwuID());
 
         /*判断是否正确获得结果*/
-        if (!response1.contains(Constant.NO_NET)) {
+        if (!response.contains(Constant.NO_NET)) {
            /*对结果进行切割获得姓名*/
-            String nametmple = response1.substring(response1.indexOf("heading\">"));
+            String nametmple = response.substring(response.indexOf("heading\">"));
             /*将结果保存进totalInfo*/
             totalInfo.setName(nametmple.substring(9, nametmple.indexOf("</h4>")));
-        } else return response1;
+        } else return response;
         return Constant.CLIENT_OK;
     }
 }

@@ -27,7 +27,7 @@ public class Test {
         HttpClient httpClient = httpClientBuilder.useSystemProperties().build();
 
         HttpPost httpPost = new HttpPost("http://127.0.0.1:7749/openswu");
-        String json = "{\"swuID\":\"222014321210033\", \"password\":\"7281542csd\", \"xnm\": \"2014\",\"xqm\": \"2\"} ";
+        String json = "{\"swuID\":\"222014321210033\", \"password\":\"7281542csd\", \"xnm\": \"2015\",\"xqm\": \"1\"} ";
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         httpPost.setEntity(stringEntity);
         HttpResponse response = null;
