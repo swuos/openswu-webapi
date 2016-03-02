@@ -11,6 +11,7 @@ import com.swu.openswu.utils.JsonHandler;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -53,17 +54,13 @@ public class MyHttpHandler implements HttpHandler {
             grades里面存放着所查询的成绩信息
             把成绩放到map里面等一下方便转换为json数据
              */
-            HashMap<String, String> responseMap = new HashMap<>();
-            int i = 1;
+            ArrayList responseList = new ArrayList();
             for (GradeData.Items item :
                     grades.getItems()) {
-                responseMap.put("kcmc" + i, item.getKcmc());
-                responseMap.put("Cj" + i, item.getCj());
-                responseMap.put("Jd" + i, item.getJd());
-                responseMap.put("Xf" + i, item.getXf());
-                ++i;
+
+                responseList.add(item);
             }
-            String responseBody = jsonHandler.toJson(responseMap);
+            String responseBody = jsonHandler.toJson(responseList);
             System.out.println(responseBody);
 
         } catch (Exception e) {

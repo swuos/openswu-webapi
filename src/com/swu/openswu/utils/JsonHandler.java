@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -28,6 +29,10 @@ public class JsonHandler {
     public String toJson(HashMap<String, String> map) {
 
         return gson.toJson(map);
+    }
+
+    public String toJson(ArrayList list) {
+        return gson.toJson(list);
     }
 
 
