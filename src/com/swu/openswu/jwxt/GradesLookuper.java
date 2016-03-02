@@ -11,15 +11,15 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/1/30.
  */
-public class GradesHelper implements Lookup {
+public class GradesLookuper implements Lookup {
 
     private Client client;
 
-    public GradesHelper(Client client) {
+    public GradesLookuper(Client client) {
         this.client = client;
     }
 
-    public GradesHelper() {
+    public GradesLookuper() {
 
 
     }

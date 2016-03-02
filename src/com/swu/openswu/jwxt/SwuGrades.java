@@ -8,19 +8,19 @@ import com.swu.openswu.utils.Client;
 public class SwuGrades {
 
     //    private Client client ;
-    private GradesHelper gradesHelper;
+    private GradesLookuper gradesLookuper;
     // 预留
     private GradeHandler gradeHandler;
 
 
     public SwuGrades(Client client) {
 //        this.client = client;
-        this.gradesHelper = new GradesHelper(client);
+        this.gradesLookuper = new GradesLookuper(client);
     }
 
     public String lookup(SearchParam searchParam) {
 
-        return this.gradesHelper.lookup(searchParam);
+        return this.gradesLookuper.lookup(searchParam);
     }
 
 
