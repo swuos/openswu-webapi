@@ -5,11 +5,8 @@ import java.util.Map;
 
 /**
  * Created by 张孟尧 on 2016/1/6.
- * Edit by 陈思电 on 2016/3/2.
  */
 public class TotalInfo {
-    //    储存查询所需的xnm,xqm(代表学年和学期)以及用户的密码
-    
     //    姓名
     private static String name = null;
     //    学号

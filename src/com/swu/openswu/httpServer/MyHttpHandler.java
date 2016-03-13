@@ -19,10 +19,19 @@ import java.util.HashMap;
  * Created by csd on 2016/2/27.
  */
 public class MyHttpHandler implements HttpHandler {
+
+    JsonHandler jsonHandler;
+    SearchParam searchParam;
+
+    Request request;
+    Response response;
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
 
+        /*
+            ·读取请求
+         */
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpExchange.getRequestBody()));
 
         StringBuilder requestBody = new StringBuilder();
@@ -30,20 +39,20 @@ public class MyHttpHandler implements HttpHandler {
         if ((line = bufferedReader.readLine()) != null) {
             requestBody.append(line);
         }
+        // 请求为空返回
         if (requestBody.equals("")) return;
         bufferedReader.close();
 
-        JsonHandler jsonHandler = new JsonHandler();
+
+        jsonHandler = new JsonHandler();
         //把请求的json转换为map
         HashMap jsonMap = jsonHandler.fromJson(requestBody.toString());
-
-
         try {
             String swuID = (String) jsonMap.get("swuID");
             String password = (String) jsonMap.get("password");
             int xnm = Integer.valueOf((String) jsonMap.get("xnm"));
             int xqm = Integer.valueOf((String) jsonMap.get("xqm"));
-            SearchParam searchParam = new SearchParam();
+            searchParam = new SearchParam();
             searchParam.setSwuID(swuID);
             searchParam.setPassword(password);
             searchParam.setXnm(xnm);
@@ -86,6 +95,7 @@ public class MyHttpHandler implements HttpHandler {
             httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, responseBody.getBytes().length);
             BufferedWriter responseWriter = new BufferedWriter(new OutputStreamWriter(httpExchange.getResponseBody()));
             responseWriter.write(responseBody.toString());
+
             responseWriter.close();
 
 
