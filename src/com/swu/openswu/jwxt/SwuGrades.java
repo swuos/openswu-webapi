@@ -23,7 +23,4 @@ public class SwuGrades {
         return this.gradesLookuper.lookup(searchParam);
     }
 
-
-
-
 }
