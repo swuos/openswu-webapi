@@ -9,5 +9,5 @@ public interface Response {
      * 发送响应
      */
 
-    public String sendResponse(String responseBody);
+    public void sendResponse(String responseBody);
 }

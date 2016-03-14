@@ -11,7 +11,9 @@ import com.swu.openswu.jwxt.TotalInfo;
 import com.swu.openswu.login.Login;
 import com.swu.openswu.utils.JsonHandler;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 
@@ -29,24 +31,32 @@ public class MyHttpHandler implements HttpHandler {
     public void handle(HttpExchange httpExchange) throws IOException {
 
 
+        request = new HttpRequest(httpExchange);
+        response = new HttpResponse(httpExchange);
+
+
         /*
             ·读取请求
          */
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpExchange.getRequestBody()));
+        String requestBody = request.getRequestBody();
+        // 请求为空则直接返回
+        if (requestBody == null) return;
 
-        StringBuilder requestBody = new StringBuilder();
-        String line;
-        if ((line = bufferedReader.readLine()) != null) {
-            requestBody.append(line);
-        }
-        // 请求为空返回
-        if (requestBody.equals("")) return;
-        bufferedReader.close();
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpExchange.getRequestBody()));
+//
+//        StringBuilder requestBody = new StringBuilder();
+//        String line;
+//        if ((line = bufferedReader.readLine()) != null) {
+//            requestBody.append(line);
+//        }
+//        // 请求为空返回
+//        if (requestBody.equals("")) return;
+//        bufferedReader.close();
 
 
         jsonHandler = new JsonHandler();
         //把请求的json转换为map
-        HashMap jsonMap = jsonHandler.fromJson(requestBody.toString());
+        HashMap jsonMap = jsonHandler.fromJson(requestBody);
         try {
             String swuID = (String) jsonMap.get("swuID");
             String password = (String) jsonMap.get("password");
