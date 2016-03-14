@@ -8,7 +8,7 @@ import java.util.Map;
 public abstract class Imformation {
     /*
             学号
-            完成情况            0丢失 1已找回
+            完成情况            0丢失需登记 1已找回需撤销
          */
     protected String swuid;
     protected int done;
