@@ -9,10 +9,10 @@ import java.io.InputStreamReader;
 /**
  * Created by csd on 2016/3/14.
  */
-public class HttpRequest implements Request {
+public final class HttpRequest implements Request {
 
 
-    HttpExchange exchange;
+    private HttpExchange exchange;
 
     public HttpRequest(HttpExchange exchange) {
         this.exchange = exchange;
@@ -25,7 +25,7 @@ public class HttpRequest implements Request {
         StringBuilder requestBody = new StringBuilder();
         //把请求读到requestBody里面
         String line;
-        if ((line = bufferedReader.readLine()) != null) {
+        while ((line = bufferedReader.readLine()) != null) {
             requestBody.append(line);
         }
         // 请求为空返回null

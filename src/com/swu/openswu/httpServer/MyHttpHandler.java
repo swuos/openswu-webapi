@@ -42,9 +42,11 @@ public class MyHttpHandler implements HttpHandler {
     private Register register;
     private Withdraw withdraw;
 
+
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
+        System.out.println(httpExchange.getRemoteAddress() + "in");
 
         request = new HttpRequest(httpExchange);
         response = new HttpResponse(httpExchange);
@@ -54,17 +56,25 @@ public class MyHttpHandler implements HttpHandler {
 
 
         String requestBody = request.getRequestBody();
+
         // 请求为空则直接返回
-        if (requestBody == null) return;
+        if (requestBody == null) {
+            return;
+        }
 
         jsonHandler = new JsonHandler();
         //把请求的json转换为map
         HashMap jsonMap = jsonHandler.fromJson(requestBody);
 
-
+        System.out.println(jsonMap);
         /*             进入功能模块          */
 
-        int function = (int) jsonMap.get("function");
+//        为什么下面这两句话都不行呢？
+//        int function = (Integer) jsonMap.get("function");
+//        int function =(int) jsonMap.get("function");
+
+//        读出功能号
+        int function = Integer.valueOf(jsonMap.get("function").toString());
         switch (function) {
             /*          1  查询成绩         */
             case 1:
@@ -135,16 +145,31 @@ public class MyHttpHandler implements HttpHandler {
              /*         3  失物招领         */
             case 3:
                 //读取需要完成哪种操作，是登记还是撤销
-                int done = (int) jsonMap.get("done");
+                int done = Integer.valueOf(jsonMap.get("done").toString());
                 switch (done) {
-                    /*0为丢失需登记*/
+                    /*  丢失需登记   */
                     case TODO_REGISTER:
+                        // 得到各数据段
+                        imformation = new WhoWantToRegister();
+                        imformation.getImformation(jsonMap);
+                        // 登记
                         register = new SimpleRegister();
+                        try {
+                            register.register(imformation);
+                        } catch (Throwable throwable) {
+                            throwable.getCause().printStackTrace();
+                        }
 
                         break;
-                    /*1为找回需撤销*/
+                    /*  找回需撤销   */
                     case TODO_WITHDRAW:
+                        // 得到各数据段
+                        imformation = new WhoWantToWithDraw();
+                        imformation.getImformation(jsonMap);
+                        // 撤销
                         withdraw = new SimpleWithDraw();
+                        withdraw.withdraw(imformation);
+
                         break;
                     default:
                         //应对错误的操作选项

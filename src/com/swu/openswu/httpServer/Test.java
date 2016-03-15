@@ -28,7 +28,16 @@ public class Test {
 
         HttpPost httpPost = new HttpPost("http://127.0.0.1:7749/openswu");
         String json = "{\"swuID\":\"\", \"password\":\"\", \"xnm\": \"2015\",\"xqm\": \"1\"} ";
-        StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
+        String lostfindJson = "{\n" +
+                "\"function\":\"3\",\n" +
+                "\"swuid\":\"222014321210033\",\n" +
+                "\"text\":\"dada\",\n" +
+                "\"details\":\"dadsa\",\n" +
+                "\"time\":\"1458012316\",\n" +
+                "\"place\" : \"dasdsa\",\n" +
+                "\"done\" : \"0\"\n" +
+                "}\n";
+        StringEntity stringEntity = new StringEntity(lostfindJson, ContentType.APPLICATION_JSON);
         httpPost.setEntity(stringEntity);
         HttpResponse response = null;
         response = httpClient.execute(httpPost);

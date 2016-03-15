@@ -27,7 +27,6 @@ public final class WhoWantToRegister extends Imformation {
         this.details = dataParsedFromAppClient.get("details").toString();
         this.time = dataParsedFromAppClient.get("time").toString();
         this.place = dataParsedFromAppClient.get("place").toString();
-        this.done = (int) dataParsedFromAppClient.get("done");
     }
 
     public String getText() {

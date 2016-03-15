@@ -6,7 +6,7 @@ package com.swu.openswu.lost_and_found;
 public interface Register {
 
     //登记
-    public void register(Imformation imformationAboutRegister);
+    public void register(Imformation imformationAboutRegister) throws Throwable;
 
 
 }

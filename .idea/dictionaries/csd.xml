@@ -2,7 +2,13 @@
   <dictionary name="csd">
     <words>
       <w>imformation</w>
+      <w>jdbc</w>
+      <w>lostfind</w>
+      <w>nakamura</w>
+      <w>openswu</w>
+      <w>pstmt</w>
       <w>swuid</w>
+      <w>xeno</w>
     </words>
   </dictionary>
 </component>
