@@ -1,4 +1,4 @@
-package com.swu.openswu.lost_and_found;
+package com.swu.openswu.lostAndFound;
 
 /**
  * Created by csd on 2016/3/12.

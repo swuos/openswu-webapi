@@ -1,11 +1,11 @@
-package com.swu.openswu.lost_and_found;
+package com.swu.openswu.lostAndFound;
 
 import java.util.Map;
 
 /**
- * Created by csd on 2016/3/13.
+ * Created by csd on 2016/3/16.
  */
-public final class WhoWantToRegister extends Imformation {
+public final class WhoWantToFindHost extends Imformation {
 
     /*
             内容
@@ -44,5 +44,4 @@ public final class WhoWantToRegister extends Imformation {
     public String getPlace() {
         return place;
     }
-
 }

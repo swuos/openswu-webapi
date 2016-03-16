@@ -26,6 +26,9 @@ public class Test {
         HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
         HttpClient httpClient = httpClientBuilder.useSystemProperties().build();
 
+
+        long date = System.currentTimeMillis() / 1000L;
+
         HttpPost httpPost = new HttpPost("http://127.0.0.1:7749/openswu");
         String json = "{\"swuID\":\"\", \"password\":\"\", \"xnm\": \"2015\",\"xqm\": \"1\"} ";
         String lostfindJson = "{\n" +
@@ -33,7 +36,7 @@ public class Test {
                 "\"swuid\":\"222014321210033\",\n" +
                 "\"text\":\"dada\",\n" +
                 "\"details\":\"dadsa\",\n" +
-                "\"time\":\"1458012316\",\n" +
+                "\"time\":" + "\"" + date + "\"" + ",\n" +
                 "\"place\" : \"dasdsa\",\n" +
                 "\"done\" : \"0\"\n" +
                 "}\n";
@@ -42,9 +45,10 @@ public class Test {
         HttpResponse response = null;
         response = httpClient.execute(httpPost);
 
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
         String str;
-        if ((str = bufferedReader.readLine()) != null) {
+        while ((str = bufferedReader.readLine()) != null) {
             System.out.println(str);
         }
         bufferedReader.close();

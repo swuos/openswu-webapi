@@ -1,4 +1,4 @@
-package com.swu.openswu.lost_and_found;
+package com.swu.openswu.lostAndFound;
 
 import com.swu.openswu.utils.ConnDb;
 
@@ -19,15 +19,13 @@ public final class SimpleRegister implements Register {
     private final String insertStr = "" +
             "INSERT " +
             "INTO lostfind(swuid,text,details,time,place,done) " +
-            "VALUES(?,?,?,?,?,0)";
+            "VALUES(?,?,?,?,?,'0')";
 
     @Override
     public void register(Imformation imformationAboutRegister) throws Throwable {
-        try {
+        try (Connection con = new ConnDb().getConnection()) {
 
-            Connection con = ConnDb.getConnection();
-
-            /*      动态语句插入数据库     */
+            /*      动态sql语句插入数据库     */
 
             PreparedStatement pstmt = con.prepareStatement(insertStr);
 

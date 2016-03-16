@@ -1,7 +1,7 @@
 /**
  * Created by csd on 2016/3/13.
  */
-package com.swu.openswu.lost_and_found;
+package com.swu.openswu.lostAndFound;
 
 /*
         失物招领模块

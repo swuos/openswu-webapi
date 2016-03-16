@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class ConnDb {
 
-    public static Connection getConnection() throws IOException, SQLException {
+    public Connection getConnection() throws IOException, SQLException {
 
         Properties props = new Properties();
 
@@ -23,12 +23,19 @@ public class ConnDb {
             props.load(in);
         }
 
-        String drivers = props.getProperty("jdbc.drivers");
-        if (drivers != null) System.setProperty("jdbc.drivers", drivers);
+        String driver = props.getProperty("jdbc.driver");
+        if (driver != null) {
+            System.out.println(driver);
+            System.setProperty("jdbc.drivers", driver);
+        }
 
         String url = props.getProperty("jdbc.url");
         String username = props.getProperty("jdbc.username");
         String password = props.getProperty("jdbc.password");
+
+        System.out.println(url);
+        System.out.println(username);
+        System.out.println(password);
 
         return DriverManager.getConnection(url, username, password);
 

@@ -1,4 +1,4 @@
-package com.swu.openswu.lost_and_found;
+package com.swu.openswu.lostAndFound;
 
 import java.util.Map;
 

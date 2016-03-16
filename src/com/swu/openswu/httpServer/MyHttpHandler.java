@@ -9,7 +9,7 @@ import com.swu.openswu.jwxt.SearchParam;
 import com.swu.openswu.jwxt.SwuGrades;
 import com.swu.openswu.jwxt.TotalInfo;
 import com.swu.openswu.login.Login;
-import com.swu.openswu.lost_and_found.*;
+import com.swu.openswu.lostAndFound.*;
 import com.swu.openswu.utils.JsonHandler;
 
 import java.io.BufferedWriter;
@@ -23,8 +23,15 @@ import java.util.HashMap;
  */
 public class MyHttpHandler implements HttpHandler {
 
-    private final static int TODO_REGISTER = 0;
+    private final static int FUNCTION_GRADE = 0;
+    private final static int FUNCTION_SCHEDULE = 1;
+    private final static int FUNCTION_LOSTANDFOUND = 2;
+
     private final static int TODO_WITHDRAW = 1;
+    private final static int TODO_REGISTER_LOST = 0;
+    private final static int TODO_REGISTER_FINDHOST = 4;
+    private final static int TODO_DISPLAY_ALL = 2;
+    private final static int TODO_DISPLAY_SELF = 3;
 
 
     private JsonHandler jsonHandler;
@@ -56,7 +63,7 @@ public class MyHttpHandler implements HttpHandler {
 
 
         String requestBody = request.getRequestBody();
-
+        System.out.println(requestBody);
         // 请求为空则直接返回
         if (requestBody == null) {
             return;
@@ -66,18 +73,17 @@ public class MyHttpHandler implements HttpHandler {
         //把请求的json转换为map
         HashMap jsonMap = jsonHandler.fromJson(requestBody);
 
-        System.out.println(jsonMap);
         /*             进入功能模块          */
 
 //        为什么下面这两句话都不行呢？
 //        int function = (Integer) jsonMap.get("function");
 //        int function =(int) jsonMap.get("function");
 
-//        读出功能号
+//        读出模块号
         int function = Integer.valueOf(jsonMap.get("function").toString());
         switch (function) {
-            /*          1  查询成绩         */
-            case 1:
+            /*          0  查询成绩         */
+            case FUNCTION_GRADE:
                 try {
                     String swuID = (String) jsonMap.get("swuID");
                     String password = (String) jsonMap.get("password");
@@ -139,16 +145,16 @@ public class MyHttpHandler implements HttpHandler {
                     e.printStackTrace();
                 }
                 break;
-            /*          2  查询课表         */
-            case 2:
+            /*          1  查询课表         */
+            case FUNCTION_SCHEDULE:
                 break;
-             /*         3  失物招领         */
-            case 3:
+             /*         2  失物招领         */
+            case FUNCTION_LOSTANDFOUND:
                 //读取需要完成哪种操作，是登记还是撤销
                 int done = Integer.valueOf(jsonMap.get("done").toString());
                 switch (done) {
                     /*  丢失需登记   */
-                    case TODO_REGISTER:
+                    case TODO_REGISTER_LOST:
                         // 得到各数据段
                         imformation = new WhoWantToRegister();
                         imformation.getImformation(jsonMap);
@@ -158,8 +164,9 @@ public class MyHttpHandler implements HttpHandler {
                             register.register(imformation);
                         } catch (Throwable throwable) {
                             throwable.getCause().printStackTrace();
+                            response.sendResponse("false");
                         }
-
+                        response.sendResponse("true");
                         break;
                     /*  找回需撤销   */
                     case TODO_WITHDRAW:
@@ -168,8 +175,32 @@ public class MyHttpHandler implements HttpHandler {
                         imformation.getImformation(jsonMap);
                         // 撤销
                         withdraw = new SimpleWithDraw();
-                        withdraw.withdraw(imformation);
+                        try {
+                            withdraw.withdraw(imformation);
+                        } catch (Throwable throwable) {
+                            throwable.getCause().printStackTrace();
+                            response.sendResponse("false");
+                        }
+                        response.sendResponse("true");
+                        break;
+                    /*  拾到需登记*/
+                    case TODO_REGISTER_FINDHOST:
+                        imformation = new WhoWantToFindHost();
+                        imformation.getImformation(jsonMap);
+                        //
+                        register = new SimpleFindHost();
+                        try {
+                            register.register(imformation);
+                        } catch (Throwable throwable) {
+                            throwable.getCause().printStackTrace();
+                            response.sendResponse("false");
+                        }
+                        response.sendResponse("true");
+                        break;
+                    case TODO_DISPLAY_ALL:
 
+                        break;
+                    case TODO_DISPLAY_SELF:
                         break;
                     default:
                         //应对错误的操作选项
