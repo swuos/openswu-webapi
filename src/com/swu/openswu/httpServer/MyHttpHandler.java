@@ -49,6 +49,7 @@ public class MyHttpHandler implements HttpHandler {
     private Register register;
     private Withdraw withdraw;
 
+    private Display display;
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
@@ -198,6 +199,8 @@ public class MyHttpHandler implements HttpHandler {
                         response.sendResponse("true");
                         break;
                     case TODO_DISPLAY_ALL:
+                        display = new DisplayAll();
+                        
 
                         break;
                     case TODO_DISPLAY_SELF:
