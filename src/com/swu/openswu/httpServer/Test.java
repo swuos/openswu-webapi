@@ -32,7 +32,7 @@ public class Test {
         HttpPost httpPost = new HttpPost("http://127.0.0.1:7749/openswu");
         String json = "{\"swuID\":\"\", \"password\":\"\", \"xnm\": \"2015\",\"xqm\": \"1\"} ";
         String lostfindJson = "{\n" +
-                "\"function\":\"3\",\n" +
+                "\"function\":\"2\",\n" +
                 "\"swuid\":\"222014321210033\",\n" +
                 "\"text\":\"dada\",\n" +
                 "\"details\":\"dadsa\",\n" +

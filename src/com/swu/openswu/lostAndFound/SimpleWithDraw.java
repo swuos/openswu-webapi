@@ -4,6 +4,7 @@ import com.swu.openswu.utils.ConnDb;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -14,13 +15,21 @@ public class SimpleWithDraw implements Withdraw {
     /*
        一个简单的信息撤销类
      */
-    private final String withdrawStr = " ";
+    private final String withdrawStr = "" +
+            "UPDATE lostfind " +
+            "SET done='1' " +
+            "WHERE swuid=?";
 
     @Override
     public void withdraw(Imformation imformationAboutWithDraw) throws Throwable {
         try (Connection con = new ConnDb().getConnection()
         ) {
 
+            PreparedStatement pstmt = con.prepareStatement(withdrawStr);
+
+            pstmt.setString(1, imformationAboutWithDraw.getSwuid());
+
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             //重新抛出并记录日志

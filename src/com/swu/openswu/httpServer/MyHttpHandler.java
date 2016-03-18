@@ -54,7 +54,7 @@ public class MyHttpHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
-        System.out.println(httpExchange.getRemoteAddress() + "in");
+        System.out.println("IP: " + httpExchange.getRemoteAddress() + " IN");
 
         request = new HttpRequest(httpExchange);
         response = new HttpResponse(httpExchange);
@@ -64,7 +64,7 @@ public class MyHttpHandler implements HttpHandler {
 
 
         String requestBody = request.getRequestBody();
-        System.out.println(requestBody);
+        System.out.println("requestBody :" + requestBody);
         // 请求为空则直接返回
         if (requestBody == null) {
             return;
@@ -82,6 +82,7 @@ public class MyHttpHandler implements HttpHandler {
 
 //        读出模块号
         int function = Integer.valueOf(jsonMap.get("function").toString());
+
         switch (function) {
             /*          0  查询成绩         */
             case FUNCTION_GRADE:
@@ -153,6 +154,7 @@ public class MyHttpHandler implements HttpHandler {
             case FUNCTION_LOSTANDFOUND:
                 //读取需要完成哪种操作，是登记还是撤销
                 int done = Integer.valueOf(jsonMap.get("done").toString());
+                System.out.println("done : " + done);
                 switch (done) {
                     /*  丢失需登记   */
                     case TODO_REGISTER_LOST:
@@ -165,7 +167,9 @@ public class MyHttpHandler implements HttpHandler {
                             register.register(imformation);
                         } catch (Throwable throwable) {
                             throwable.getCause().printStackTrace();
+
                             response.sendResponse("false");
+
                         }
                         response.sendResponse("true");
                         break;
@@ -200,10 +204,25 @@ public class MyHttpHandler implements HttpHandler {
                         break;
                     case TODO_DISPLAY_ALL:
                         display = new DisplayAll();
-                        
 
+                        try {
+                            response.sendResponse(display.display());
+                        } catch (Throwable throwable) {
+
+                            throwable.printStackTrace();
+
+                        }
                         break;
                     case TODO_DISPLAY_SELF:
+                        display = new DisplaySelf((String) jsonMap.get("swuid"));
+
+                        try {
+                            response.sendResponse(display.display());
+                        } catch (Throwable throwable) {
+                            throwable.printStackTrace();
+                        }
+
+
                         break;
                     default:
                         //应对错误的操作选项

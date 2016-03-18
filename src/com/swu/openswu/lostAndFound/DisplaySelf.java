@@ -2,6 +2,7 @@ package com.swu.openswu.lostAndFound;
 
 import com.sun.istack.internal.Nullable;
 import com.swu.openswu.utils.ConnDb;
+import com.swu.openswu.utils.ResultSetToJson;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,17 +20,18 @@ public final class DisplaySelf implements Display {
 
     private String swuid;
 
+    private ResultSet resultSet;
+    private ResultSetToJson resultSetToJson;
+
+
     public DisplaySelf(@Nullable String swuid) {
         this.swuid = swuid;
+        resultSetToJson = new ResultSetToJson();
     }
-
-
-    private ResultSet resultSet;
 
     private final String displayStr = "" +
             "SELECT * " +
-            "FROM openswu " +
-            "WHERE swuid = ?";
+            "FROM lostfind where swuid = ?";
 
     @Override
     public String display() throws Throwable {
@@ -37,12 +39,20 @@ public final class DisplaySelf implements Display {
         try (Connection con = new ConnDb().getConnection()
         ) {
 
+//            Statement statement = con.createStatement();
+//            resultSet = statement.executeQuery(this.displayStr);
+
             PreparedStatement pstmt = con.prepareStatement(displayStr);
 
-            pstmt.setString(1, this.swuid);
-
+            if (this.swuid == null) {
+                pstmt.setString(1, "*");
+            } else {
+                pstmt.setString(1, this.swuid);
+            }
             resultSet = pstmt.executeQuery();
 
+
+            return resultSetToJson.resultSetToJson(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,9 +61,11 @@ public final class DisplaySelf implements Display {
             throw newExc;
         } catch (IOException e) {
             e.printStackTrace();
+            Throwable newExc = new IOException("IO error in display");
+            newExc.initCause(e);
+            throw newExc;
         }
 
-
-        return null;
     }
+
 }
