@@ -2,8 +2,6 @@ package com.swu.openswu.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,10 +16,17 @@ public class ConnDb {
 
         Properties props = new Properties();
 
-        try (InputStream in = Files.newInputStream(Paths.get("database.properties"));
+
+        try (InputStream in = this.getClass().getResourceAsStream("/resource/database.properties");
         ) {
             props.load(in);
         }
+        //相同效果 以此保证运行时读取配置文件路径是正确的。
+//        try (InputStream in = this.getClass().getResource("/resource/database.properties").openStream() ;
+//        ) {
+//            props.load(in);
+//        }
+
 
         String driver = props.getProperty("jdbc.driver");
         if (driver != null) {

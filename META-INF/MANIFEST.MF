@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: com.swu.openswu.socketServer.Server
+Main-Class: com.swu.openswu.httpServer.Server
+
 
