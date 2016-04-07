@@ -18,16 +18,16 @@ public class SimpleWithDraw implements Withdraw {
     private final String withdrawStr = "" +
             "UPDATE lostfind " +
             "SET done='1' " +
-            "WHERE swuid=?";
+            "WHERE id=?";
 
     @Override
-    public void withdraw(Imformation imformationAboutWithDraw) throws Throwable {
+    public void withdraw(Information informationAboutWithDraw) throws Throwable {
         try (Connection con = new ConnDb().getConnection()
         ) {
 
             PreparedStatement pstmt = con.prepareStatement(withdrawStr);
 
-            pstmt.setString(1, imformationAboutWithDraw.getSwuid());
+            pstmt.setString(1, ((WhoWantToWithDraw) informationAboutWithDraw).getId());
 
             pstmt.executeUpdate();
 

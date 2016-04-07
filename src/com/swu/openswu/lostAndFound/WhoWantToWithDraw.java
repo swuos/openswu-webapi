@@ -5,14 +5,18 @@ import java.util.Map;
 /**
  * Created by csd on 2016/3/13.
  */
-public final class WhoWantToWithDraw extends Imformation {
+public final class WhoWantToWithDraw extends Information {
 
+
+    String id;
 
     @Override
     public void getImformation(Map dataParsedFromAppClient) {
 
-        this.swuid = dataParsedFromAppClient.get("swuid").toString();
+        this.id = dataParsedFromAppClient.get("id").toString();
     }
 
-
+    public String getId() {
+        return id;
+    }
 }

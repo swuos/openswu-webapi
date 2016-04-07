@@ -6,5 +6,5 @@ package com.swu.openswu.lostAndFound;
 public interface Withdraw {
 
     //撤销登记
-    public void withdraw(Imformation imformationAboutWithDraw) throws Throwable;
+    public void withdraw(Information informationAboutWithDraw) throws Throwable;
 }

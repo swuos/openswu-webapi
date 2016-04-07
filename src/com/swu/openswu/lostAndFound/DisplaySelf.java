@@ -31,7 +31,7 @@ public final class DisplaySelf implements Display {
 
     private final String displayStr = "" +
             "SELECT * " +
-            "FROM lostfind where swuid = ?";
+            "FROM lostfind where swuid LIKE ?";
 
     @Override
     public String display() throws Throwable {
@@ -45,7 +45,7 @@ public final class DisplaySelf implements Display {
             PreparedStatement pstmt = con.prepareStatement(displayStr);
 
             if (this.swuid == null) {
-                pstmt.setString(1, "*");
+                pstmt.setString(1, "%");
             } else {
                 pstmt.setString(1, this.swuid);
             }

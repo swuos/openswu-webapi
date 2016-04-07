@@ -41,11 +41,11 @@ public class MyHttpHandler implements HttpHandler {
     private Response response;
 
     /*
-       Imformation  实现了该接口的类携带了失物招领模块中用户的信息
+       Information  实现了该接口的类携带了失物招领模块中用户的信息
        Register     实现了该接口的类负责登记失物招领信息
        Withdraw     实现了改接口的类负责撤销失物招领信息
     */
-    private Imformation imformation;
+    private Information information;
     private Register register;
     private Withdraw withdraw;
 
@@ -153,18 +153,18 @@ public class MyHttpHandler implements HttpHandler {
              /*         2  失物招领         */
             case FUNCTION_LOSTANDFOUND:
                 //读取需要完成哪种操作，是登记还是撤销
-                int done = Integer.valueOf(jsonMap.get("done").toString());
+                int done = Integer.parseInt(jsonMap.get("done").toString());
                 System.out.println("done : " + done);
                 switch (done) {
                     /*  丢失需登记   */
                     case TODO_REGISTER_LOST:
                         // 得到各数据段
-                        imformation = new WhoWantToRegister();
-                        imformation.getImformation(jsonMap);
+                        information = new WhoWantToRegister();
+                        information.getImformation(jsonMap);
                         // 登记
                         register = new SimpleRegister();
                         try {
-                            register.register(imformation);
+                            register.register(information);
                         } catch (Throwable throwable) {
                             throwable.getCause().printStackTrace();
 
@@ -176,12 +176,12 @@ public class MyHttpHandler implements HttpHandler {
                     /*  找回需撤销   */
                     case TODO_WITHDRAW:
                         // 得到各数据段
-                        imformation = new WhoWantToWithDraw();
-                        imformation.getImformation(jsonMap);
+                        information = new WhoWantToWithDraw();
+                        information.getImformation(jsonMap);
                         // 撤销
                         withdraw = new SimpleWithDraw();
                         try {
-                            withdraw.withdraw(imformation);
+                            withdraw.withdraw(information);
                         } catch (Throwable throwable) {
                             throwable.getCause().printStackTrace();
                             response.sendResponse("false");
@@ -190,12 +190,12 @@ public class MyHttpHandler implements HttpHandler {
                         break;
                     /*  拾到需登记*/
                     case TODO_REGISTER_FINDHOST:
-                        imformation = new WhoWantToFindHost();
-                        imformation.getImformation(jsonMap);
+                        information = new WhoWantToFindHost();
+                        information.getImformation(jsonMap);
                         //
                         register = new SimpleFindHost();
                         try {
-                            register.register(imformation);
+                            register.register(information);
                         } catch (Throwable throwable) {
                             throwable.getCause().printStackTrace();
                             response.sendResponse("false");

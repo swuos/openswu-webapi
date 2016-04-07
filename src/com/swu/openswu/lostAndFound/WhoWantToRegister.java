@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Created by csd on 2016/3/13.
  */
-public final class WhoWantToRegister extends Imformation {
+public class WhoWantToRegister extends Information {
 
     /*
             内容
@@ -27,6 +27,7 @@ public final class WhoWantToRegister extends Imformation {
         this.details = dataParsedFromAppClient.get("details").toString();
         this.time = dataParsedFromAppClient.get("time").toString();
         this.place = dataParsedFromAppClient.get("place").toString();
+        this.done = Integer.parseInt(dataParsedFromAppClient.get("done").toString());
     }
 
     public String getText() {

@@ -10,30 +10,31 @@ import java.sql.SQLException;
 /**
  * Created by csd on 2016/3/13.
  */
-public final class SimpleRegister implements Register {
+public class SimpleRegister implements Register {
 
     /*
         一个简单的信息登记类
      */
 
-    private final String insertStr = "" +
+    protected final String insertStr = "" +
             "INSERT " +
             "INTO lostfind(swuid,text,details,time,place,done) " +
-            "VALUES(?,?,?,?,?,'0')";
+            "VALUES(?,?,?,?,?,?)";
 
     @Override
-    public void register(Imformation imformationAboutRegister) throws Throwable {
+    public void register(Information informationAboutRegister) throws Throwable {
         try (Connection con = new ConnDb().getConnection()) {
 
             /*      动态sql语句插入数据库     */
 
             PreparedStatement pstmt = con.prepareStatement(insertStr);
 
-            pstmt.setString(1, imformationAboutRegister.getSwuid());
-            pstmt.setString(2, ((WhoWantToRegister) imformationAboutRegister).getText());
-            pstmt.setString(3, ((WhoWantToRegister) imformationAboutRegister).getDetails());
-            pstmt.setString(4, ((WhoWantToRegister) imformationAboutRegister).getTime());
-            pstmt.setString(5, ((WhoWantToRegister) imformationAboutRegister).getPlace());
+            pstmt.setString(1, informationAboutRegister.getSwuid());
+            pstmt.setString(2, ((WhoWantToRegister) informationAboutRegister).getText());
+            pstmt.setString(3, ((WhoWantToRegister) informationAboutRegister).getDetails());
+            pstmt.setString(4, ((WhoWantToRegister) informationAboutRegister).getTime());
+            pstmt.setString(5, ((WhoWantToRegister) informationAboutRegister).getPlace());
+            pstmt.setInt(6, informationAboutRegister.getDone());
 
             pstmt.executeUpdate();
 
