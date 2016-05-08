@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Class-Path: lib\jersey-guava-2.22.2.jar lib\jersey-container-grizzly2-
+ http-2.22.2.jar lib\hk2-utils-2.4.0-b34.jar lib\commons-logging-1.2.j
+ ar lib\jersey-media-jaxb-2.22.2.jar lib\jersey-common-2.22.2.jar lib\
+ grizzly-http-server-2.3.23.jar lib\javax.ws.rs-api-2.0.1.jar lib\org.
+ eclipse.persistence.moxy-2.6.0.jar lib\gson-2.2.2.jar lib\grizzly-fra
+ mework-2.3.23.jar lib\validation-api-1.1.0.Final.jar lib\jersey-clien
+ t-2.22.2.jar lib\commons-codec-1.9.jar lib\jersey-entity-filtering-2.
+ 22.2.jar lib\jersey-server-2.22.2.jar lib\jersey-media-moxy-2.22.2.ja
+ r lib\javax.annotation-api-1.2.jar lib\httpcore-4.4.3.jar lib\javax.j
+ son-1.0.4.jar lib\org.eclipse.persistence.asm-2.6.0.jar lib\httpclien
+ t-4.5.1.jar lib\aopalliance-repackaged-2.4.0-b34.jar lib\hk2-api-2.4.
+ 0-b34.jar lib\org.eclipse.persistence.core-2.6.0.jar lib\osgi-resourc
+ e-locator-1.0.1.jar lib\grizzly-http-2.3.23.jar lib\javax.inject-2.4.
+ 0-b34.jar lib\javassist-3.18.1-GA.jar lib\hk2-locator-2.4.0-b34.jar
+Main-Class: cn.swu.edu.opensource.openswu_webapi_jersey.Main
+
