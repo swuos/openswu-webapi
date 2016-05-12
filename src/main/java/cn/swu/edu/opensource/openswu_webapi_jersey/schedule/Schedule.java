@@ -7,7 +7,7 @@ import java.util.List;
  * <p>
  * Email : sidingchan@gmail.com
  *
- * javabean：课程表对象。
+ * javabean：从教务系统获取的课程表对象。
  */
 public class Schedule {
     private List<kbList> kbList;

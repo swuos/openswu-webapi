@@ -41,9 +41,11 @@ public class Constant {
     //goto 是java保留字
     public static final String gotos = "http://urp6.swu.edu.cn/loginSuccess.portal";
     public static final String gotoOnFail = "http://urp6.swu.edu.cn/loginFailure.portal";
-    //查询地址
-    public static final String urlGradeSearch = "http://jw.swu.edu.cn/jwglxt/cjcx/cjcx_cxDgXscj.html?" + "doType=query&gnmkdmKey=N305005&sessionUserKey=";
-    //查询课表的地址
-
+    //查询成绩地址
+    public static final String urlGradeSearch = "http://jw.swu.edu.cn/jwglxt/cjcx/cjcx_cxDgXscj.html?" +
+            "doType=query&gnmkdmKey=N305005&sessionUserKey=";
+    //查询课表地址
+    public static final String urlScheduleSearch ="http://jw.swu.edu.cn/jwglxt/kbcx/xskbcx_cxXsKb.html?" +
+            "gnmkdmKey=N253508&sessionUserKey=";
 }
 

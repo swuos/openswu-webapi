@@ -23,7 +23,9 @@ public class LoginToEms {
      * @throws ParamException 用户不存在或密码错误
      */
     public LoginToEms(Param param) throws ParamException{
+
         Login login = new Login(param.getSwuID(),param.getPassword());
+
 
         String response = login.getResponse();
 

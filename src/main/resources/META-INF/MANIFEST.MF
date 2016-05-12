@@ -13,5 +13,5 @@ Class-Path: lib\jersey-guava-2.22.2.jar lib\jersey-container-grizzly2-
  0-b34.jar lib\org.eclipse.persistence.core-2.6.0.jar lib\osgi-resourc
  e-locator-1.0.1.jar lib\grizzly-http-2.3.23.jar lib\javax.inject-2.4.
  0-b34.jar lib\javassist-3.18.1-GA.jar lib\hk2-locator-2.4.0-b34.jar
-Main-Class: cn.swu.edu.opensource.openswu_webapi_jersey.Main
+Main-Class: cn.swu.edu.opensource.openswu_webapi_jersey.main.Main
 

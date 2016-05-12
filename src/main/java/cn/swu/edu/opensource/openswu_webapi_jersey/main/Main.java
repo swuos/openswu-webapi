@@ -1,4 +1,4 @@
-package cn.swu.edu.opensource.openswu_webapi_jersey;
+package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
