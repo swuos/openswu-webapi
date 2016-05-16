@@ -24,11 +24,6 @@ public class ScheduleParam implements Param{
 
     public ScheduleParam(){}
 
-    public ScheduleParam(Integer xn, Integer xq) {
-        this.xn = xn;
-        this.xq = xq;
-    }
-
     public Integer getXn() {
         return xn;
     }
