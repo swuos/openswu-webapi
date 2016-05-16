@@ -4,11 +4,15 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.grade;
  * Created by csd on 2016/3/2.
  */
 
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+
 /**
- * 存放查询的参数，密码只能被设置而不能被读取
+ *  The POJO supported by MOXy
+ *
+ *  该类作为成绩查询模块，被MOXy支持的javabean。
  */
 
-public class SearchParam {
+public class SearchParam implements Param{
 
     public Integer xnm = null;
     public Integer xqm = null;
