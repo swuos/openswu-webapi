@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Date;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/5/18.
@@ -48,11 +49,12 @@ public class ReportIssue {
         File issuesFile = new File("issues.txt");
 
         if (issuesFile.exists()) {
-            /* 往后追加
-            * swuid   issue
-            * */
+            /*
+            * 往后追加
+            * 时间  学号  问题  联系方式
+            */
             try (FileWriter fileWriter = new FileWriter(issuesFile,true)){
-                fileWriter.write(issue.getSwuID()+"    "+issue.getIssue()+"\n");
+                fileWriter.write(timestamp2Date(new Date().getTime())+"  "+issue.getSwuID()+"  "+issue.getIssue()+"  "+issue.getContact()+"\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -62,7 +64,7 @@ public class ReportIssue {
             synchronized(issuesFile){
                 if (issuesFile.exists()){
                     try (FileWriter fileWriter = new FileWriter(issuesFile,true)){
-                        fileWriter.write(issue.getSwuID()+"    "+issue.getIssue()+"\n");
+                        fileWriter.write(timestamp2Date(new Date().getTime())+"  "+issue.getSwuID()+"  "+issue.getIssue()+"  "+issue.getContact()+"\n");
                         fileWriter.flush();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -71,7 +73,7 @@ public class ReportIssue {
                     try {
                         issuesFile.createNewFile();
                         try(FileWriter fileWriter = new FileWriter(issuesFile,true)) {
-                            fileWriter.write(issue.getSwuID()+"    "+issue.getIssue()+"\n");
+                            fileWriter.write(timestamp2Date(new Date().getTime())+"  "+issue.getSwuID()+"  "+issue.getIssue()+"  "+issue.getContact()+"\n");
                             fileWriter.flush();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -85,5 +87,12 @@ public class ReportIssue {
 
 
         return "Thanks for your report.";
+    }
+
+
+    private String timestamp2Date(long timestamp){
+//        Long timestamp = Long.parseLong(timestampString)*1000;
+        String date = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(timestamp));
+        return date;
     }
 }

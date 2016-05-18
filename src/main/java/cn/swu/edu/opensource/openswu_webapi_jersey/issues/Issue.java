@@ -21,6 +21,8 @@ public class Issue {
 
     public String issue;
 
+    public String contact;
+
     public String getSwuID() {
         return swuID;
     }
@@ -35,5 +37,13 @@ public class Issue {
 
     public void setIssue(String issue) {
         this.issue = issue;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 }
