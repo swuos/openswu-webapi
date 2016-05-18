@@ -1,6 +1,7 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.issues;
 
 import javax.ws.rs.DefaultValue;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -15,8 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Issue {
 
 
-    //未post学号数据时，设置默认学号
-    @DefaultValue("222014321210033")
+    //未post学号数据时，设置默认学号位数和正常学号相同 对齐格式
+    @XmlElement(defaultValue = "xxxxxxxxxxxxxxx")
     public String swuID;
 
     public String issue;

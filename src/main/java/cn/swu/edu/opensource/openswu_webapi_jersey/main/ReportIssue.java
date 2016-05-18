@@ -37,6 +37,9 @@ public class ReportIssue {
         /* 认证 */
         new SecurityFilter().filter(cr);
 
+        if(issue.getIssue()==null){
+            return "参数错误，issue不能为空。";
+        }
 //        URL url = this.getClass().getClassLoader().getResource(".");
 //
 //        File issuesFile = null;
@@ -86,7 +89,7 @@ public class ReportIssue {
         }
 
 
-        return "Thanks for your report.";
+        return "谢谢反馈。";
     }
 
 
