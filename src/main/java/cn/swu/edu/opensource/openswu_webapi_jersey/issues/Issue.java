@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * POJO,处理用户提交的bug和建议。
  */
 
-@XmlRootElement
 public class Issue {
 
 
@@ -23,6 +22,15 @@ public class Issue {
     public String issue;
 
     public String contact;
+
+    public Issue() {
+    }
+
+    public Issue(String swuID, String issue, String contact) {
+        this.swuID = swuID;
+        this.issue = issue;
+        this.contact = contact;
+    }
 
     public String getSwuID() {
         return swuID;

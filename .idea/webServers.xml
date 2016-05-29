@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="c089d05a-c3a4-4cf2-bdec-ff86a9d17395" name="opensource" url="http://202.202.111.145">
-        <fileTransfer host="202.202.111.145" port="22" rootFolder="/home/nakamura/openswu/" accessType="SFTP" password="dfd2dfcfdfc4dfc5df99df99df9cdf9fdf99df9ddf9f" username="nakaruma">
+      <webServer id="89f60eeb-3f4e-449c-a3d0-911b7e94bc38" name="opensource" url="http://202.202.111.145">
+        <fileTransfer host="202.202.111.145" port="22" rootFolder="/home/nakamura" accessType="SFTP" username="nakamura">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
