@@ -44,7 +44,7 @@ public class GradesLookuper implements Lookup {
 //        //提交的表单中， 学期的对应关系是这样的，3->1 12->2 16->3 所以需要转换一下
 //        nameValuePair.add(new BasicNameValuePair("xqm", "" + Constant.ALL_XQM[searchParam.getXqm()]));
 //
-//        String response = this.client.doPost(Constant.urlGradeSearch + searchParam.getSwuID(), nameValuePair);
+//        String response = this.client.doPost(Constant.urlGradeSearch + searchParam.getUsername(), nameValuePair);
 //
 //        return response;
 //    }

@@ -1,5 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey;
 
+import cn.swu.edu.opensource.openswu_webapi_jersey.main.Main;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.Before;

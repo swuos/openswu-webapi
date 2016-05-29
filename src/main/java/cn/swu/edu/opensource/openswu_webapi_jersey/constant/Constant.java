@@ -47,5 +47,7 @@ public class Constant {
     //查询课表地址
     public static final String urlScheduleSearch ="http://jw.swu.edu.cn/jwglxt/kbcx/xskbcx_cxXsKb.html?" +
             "gnmkdmKey=N253508&sessionUserKey=";
+    //退网地址
+    public static final String urlQuitNet="http://service.swu.edu.cn/fee/remote_logout2.jsp";
 }
 
