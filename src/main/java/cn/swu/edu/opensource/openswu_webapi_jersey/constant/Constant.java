@@ -49,5 +49,9 @@ public class Constant {
             "gnmkdmKey=N253508&sessionUserKey=";
     //退网地址
     public static final String urlQuitNet="http://service.swu.edu.cn/fee/remote_logout2.jsp";
+
+    //查询个人基本信息
+    public static final String  urlPersonalInfo ="http://jw.swu.edu.cn/jwglxt/xsxxxggl/xsgrxxwh_cxXsgrxx.html?"+
+            "gnmkdmKey=N100801&sessionUserKey=";
 }
 
