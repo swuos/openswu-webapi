@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="openswu-webapi-jersey">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/classes/artifacts/openswu_webapi_jersey_jar/openswu-webapi-jersey.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
