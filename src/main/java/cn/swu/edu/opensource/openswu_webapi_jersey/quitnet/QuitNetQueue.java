@@ -54,7 +54,7 @@ public class QuitNetQueue {
 //                System.out.println("list数量"+listSize);
                 for (int j = 0; j < listSize; j++) {
                     Map.Entry<String, QuitNetParam> item = list.get(j);
-                    QuitNetParam entry = item.getValue();
+                    final QuitNetParam entry = item.getValue();
                     /*如果定时和当前时间相差小于等于sleepTime,是则退出,否则说明剩下的时间都大于sleepTime,在下一次进行判断*/
                     if (entry.getDate() - nowTime <= sleepTime) {
                         /*开新线程执行退出网络的操作*/

@@ -7,7 +7,7 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.quitnet;
  */
 public class QuitNetParam {
     public String username;
-    public String Password;
+    public String password;
     public Long date;
 
     public Long getDate() {
@@ -15,7 +15,7 @@ public class QuitNetParam {
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public String getUsername() {
@@ -27,7 +27,7 @@ public class QuitNetParam {
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public void setUsername(String username) {

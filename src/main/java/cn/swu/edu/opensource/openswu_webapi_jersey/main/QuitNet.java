@@ -38,7 +38,9 @@ public class QuitNet {
         new SecurityFilter().filter(cr);
 
         /* 需要立即退网 */
-        if(quitNetParam.getDate() == 0L){
+
+        long d = quitNetParam.getDate();
+        if (d == 0L) {
             Quit quiter = new Quit();
             quiter.doQuit(quitNetParam.getUsername(),quitNetParam.getPassword());
 
@@ -48,12 +50,20 @@ public class QuitNet {
             *
             * */
             return this.getResponse(quiter.getResponse());
+        } else if (d == -1L) {
+            /* 取消定时退网 */
+            if (QuitNetQueue.getInstance().removeItem(quitNetParam.getUsername())) {
+                return "取消定时退网成功";
+            }
+            return "取消定时退网失败";
+        } else {
+        /* 需要延时退网 */
+            QuitNetQueue.getInstance().addItem(quitNetParam);
+
+            return "定时退网排队成功";
         }
 
-        /* 需要延时退网 */
-        QuitNetQueue.getInstance().addItem(quitNetParam);
 
-        return "定时退网排队成功";
     }
 
     /*
