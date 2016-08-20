@@ -1,5 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
+import cn.swu.edu.opensource.openswu_webapi_jersey.auth.AuthFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.Quit;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.QuitNetParam;
@@ -11,6 +12,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.io.UnsupportedEncodingException;
@@ -34,9 +36,9 @@ public class QuitNet {
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt(QuitNetParam quitNetParam){
 
-        /* 完成认证 */
-        new SecurityFilter().filter(cr);
-
+//        /* 完成认证 */
+//        new SecurityFilter().filter(cr);
+        new AuthFilter().filter(cr);
         /* 需要立即退网 */
 
         long d = quitNetParam.getDate();
