@@ -1,5 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
+import cn.swu.edu.opensource.openswu_webapi_jersey.auth.AuthFilter;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -12,7 +13,7 @@ import java.net.URI;
  */
 public class Main {
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://0.0.0.0:29527/openswu/";
+    public static final String BASE_URI = "http://localhost:29527/openswu/";
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
@@ -23,9 +24,13 @@ public class Main {
         // in cn.swu.edu.opensource.openswu_webapi_jersey package
         final ResourceConfig rc = new ResourceConfig().packages("cn.swu.edu.opensource.openswu_webapi_jersey");
 
+        // register authentication filter
+//        rc.register(AuthFilter.class);
+
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
+
     }
 
     /**

@@ -5,6 +5,7 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.SwuSchedule;
 import com.google.gson.Gson;
+import org.apache.commons.logging.impl.Log4JLogger;
 import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.sound.midi.SysexMessage;
