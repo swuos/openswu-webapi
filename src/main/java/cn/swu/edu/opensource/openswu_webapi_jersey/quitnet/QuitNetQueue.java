@@ -1,5 +1,8 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.quitnet;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.*;
 
 /**
@@ -12,6 +15,7 @@ import java.util.*;
  */
 public class QuitNetQueue {
 
+    private static Log LOGGER = LogFactory.getLog(QuitNetQueue.class);
 
     /* 单例模式实现 */
     private static QuitNetQueue ourInstance = new QuitNetQueue();
@@ -35,7 +39,9 @@ public class QuitNetQueue {
                 try {
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    if (LOGGER.isErrorEnabled()) {
+                        LOGGER.error(e.getMessage());
+                    }
                 }
 //                System.out.println("队列总数"+queue.size());
                 /*对队列按照时间的先后进行排序*/
@@ -89,8 +95,6 @@ public class QuitNetQueue {
         }
         /*提交的时间小于当前时间*/
         if (item.getDate() < System.currentTimeMillis()) {
-//            System.out.println("lower than current time"+System.currentTimeMillis());
-
             return false;
         }
         String swuID = item.getUsername();
@@ -116,7 +120,10 @@ public class QuitNetQueue {
      * 启动队列
      */
     private void startQueue() {
-        thread.start();
+        //没有启动的话就启动
+        if (!thread.isAlive()) {
+            thread.start();
+        }
     }
 
 }

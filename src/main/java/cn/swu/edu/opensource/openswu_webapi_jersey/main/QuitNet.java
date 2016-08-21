@@ -5,6 +5,8 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.Quit;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.QuitNetParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.QuitNetQueue;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.jersey.server.ContainerRequest;
 import sun.nio.cs.ext.GBK;
 
@@ -26,7 +28,7 @@ import java.io.UnsupportedEncodingException;
 @Path("quitnet")
 public class QuitNet {
 
-
+    private static Log LOGGER = LogFactory.getLog(QuitNet.class);
 
     @Context
     ContainerRequest cr;
@@ -37,9 +39,11 @@ public class QuitNet {
     public String getIt(QuitNetParam quitNetParam){
 
 //        /* 完成认证 */
-//        new SecurityFilter().filter(cr);
-        new AuthFilter().filter(cr);
+        new SecurityFilter().filter(cr);
+//        new AuthFilter().filter(cr);
         /* 需要立即退网 */
+
+        LOGGER.info("QuitNet => " + quitNetParam.toString());
 
         long d = quitNetParam.getDate();
         if (d == 0L) {

@@ -64,5 +64,10 @@ public class SearchParam implements Param{
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    @Override
+    public String toString() {
+        return "swuid : " + this.getSwuID() + " password : " + this.getPassword()
+                + " xn : " + this.getXnm() + " xq :" + this.getXqm();
+    }
 }

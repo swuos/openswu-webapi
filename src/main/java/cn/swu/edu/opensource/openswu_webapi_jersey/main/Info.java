@@ -6,6 +6,8 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.info.InfoParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.PersonalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.SwuInfo;
 import com.google.gson.Gson;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
@@ -28,6 +30,7 @@ public class Info {
     //利用该类进行基本认证
     SecurityFilter filter = new SecurityFilter();
 
+    private static Log LOGGER = LogFactory.getLog(Info.class);
     //将请求注入
     @Context
     ContainerRequest cr;
@@ -39,11 +42,13 @@ public class Info {
         filter.filter(cr);
         String response = null;
 
+        LOGGER.info("Info => " + infoParam.toString());
+
         try {
             SwuInfo swuInfo  = new SwuInfo(infoParam);
             response = swuInfo.getInfo();
         } catch (ParamException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
 
         return new Gson().fromJson(response, PersonalInfo.class);

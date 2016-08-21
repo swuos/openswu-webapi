@@ -1,6 +1,7 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.auth.AuthFilter;
+import org.apache.log4j.PropertyConfigurator;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -39,6 +40,7 @@ public class Main {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+        PropertyConfigurator.configure("./log4j.properties");
         final HttpServer server = startServer();
         System.out.println(String.format("Jersey app started with WADL available at "
                 + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));

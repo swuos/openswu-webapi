@@ -5,6 +5,8 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.SwuSchedule;
 import com.google.gson.Gson;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.glassfish.jersey.server.ContainerRequest;
 
@@ -25,6 +27,8 @@ import javax.ws.rs.core.MediaType;
 
 @Path("schedule")
 public class Schedule {
+
+    private static Log LOGGER = LogFactory.getLog(Schedule.class);
 
     //利用该类进行基本认证
     SecurityFilter filter = new SecurityFilter();
@@ -49,16 +53,15 @@ public class Schedule {
 
         filter.filter(cr);
 
+        LOGGER.info("Schedule => " + scheduleParam.toString());
 
         String response = null;
 
-
         try {
-
             SwuSchedule swuSchedule  = new SwuSchedule(scheduleParam);
             response = swuSchedule.getSchedule();
         } catch (ParamException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
 
         return new Gson().fromJson(response, cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule.class);

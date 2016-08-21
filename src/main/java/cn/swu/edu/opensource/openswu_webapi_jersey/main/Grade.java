@@ -7,7 +7,10 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SearchParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SwuGrades;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.TotalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.Login;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.JsonHandler;
 import com.google.gson.Gson;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
@@ -30,6 +33,7 @@ public class Grade {
     //利用该类进行基本认证
     SecurityFilter filter = new SecurityFilter();
 
+    private static Log LOGGER = LogFactory.getLog(Grade.class);
     //将请求注入
     @Context
     ContainerRequest cr;
@@ -47,6 +51,8 @@ public class Grade {
     @Produces(MediaType.APPLICATION_JSON)
     public GradeData getIt(SearchParam param) {
         filter.filter(cr);
+
+        LOGGER.info("Grade => " + param.toString());
 
         /*登录*/
         Login login = new Login(param.getSwuID(), param.getPassword());

@@ -56,5 +56,9 @@ public class ScheduleParam implements Param{
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "swuid : " + this.getSwuID() + " password : " + this.getPassword()
+                + " xn : " + this.getXn() + " xq :" + this.getXq();
+    }
 }

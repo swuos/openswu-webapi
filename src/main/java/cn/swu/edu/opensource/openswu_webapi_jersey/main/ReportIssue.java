@@ -2,6 +2,9 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.issues.Issue;
+import cn.swu.edu.opensource.openswu_webapi_jersey.login.Login;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
@@ -29,6 +32,8 @@ public class ReportIssue {
     @Context
     ContainerRequest cr;
 
+    private static Log LOGGER = LogFactory.getLog(ReportIssue.class);
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -36,6 +41,8 @@ public class ReportIssue {
 
         /* 认证 */
         new SecurityFilter().filter(cr);
+
+        LOGGER.info("ReportIssue => " + issue.toString());
 
         if(issue.getIssue()==null){
             return "参数错误，issue不能为空。";
@@ -60,7 +67,7 @@ public class ReportIssue {
                 fileWriter.write(timestamp2Date(new Date().getTime())+"  "+issue.getSwuID()+"  "+issue.getIssue()+"  "+issue.getContact()+"\n");
                 fileWriter.flush();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error(e.getMessage());
             }
         }else{
             /* 解决可能在文件不存在时可能出现的并发问题*/
@@ -70,7 +77,7 @@ public class ReportIssue {
                         fileWriter.write(timestamp2Date(new Date().getTime())+"  "+issue.getSwuID()+"  "+issue.getIssue()+"  "+issue.getContact()+"\n");
                         fileWriter.flush();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        LOGGER.error(e.getMessage());
                     }
                 }else {
                     try {
@@ -79,10 +86,10 @@ public class ReportIssue {
                             fileWriter.write(timestamp2Date(new Date().getTime())+"  "+issue.getSwuID()+"  "+issue.getIssue()+"  "+issue.getContact()+"\n");
                             fileWriter.flush();
                         } catch (IOException e) {
-                            e.printStackTrace();
+                            LOGGER.error(e.getMessage());
                         }
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        LOGGER.error(e.getMessage());
                     }
                 }
             }

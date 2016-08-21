@@ -33,4 +33,11 @@ public class QuitNetParam {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public String toString() {
+        return "username : " + this.getUsername() +
+                " password : " + this.getPassword() +
+                " date : " + this.getDate();
+    }
 }

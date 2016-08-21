@@ -53,6 +53,14 @@ public class Issue {
     }
 
     public void setContact(String contact) {
+
         this.contact = contact;
+    }
+
+
+    @Override
+    public String toString() {
+        return "swuid : " + this.getSwuID() + " issueSize : " + this.getIssue().length() + "contact : " +
+                this.getContact();
     }
 }
