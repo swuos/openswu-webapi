@@ -27,9 +27,6 @@ import javax.ws.rs.core.MediaType;
 @Path("info")
 public class Info {
 
-    //利用该类进行基本认证
-    SecurityFilter filter = new SecurityFilter();
-
     private static Log LOGGER = LogFactory.getLog(Info.class);
     //将请求注入
     @Context
@@ -39,7 +36,7 @@ public class Info {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PersonalInfo getIt(InfoParam infoParam){
-        filter.filter(cr);
+        SecurityFilter.filter(cr);
         String response = null;
 
         LOGGER.info("Info => " + infoParam.toString());

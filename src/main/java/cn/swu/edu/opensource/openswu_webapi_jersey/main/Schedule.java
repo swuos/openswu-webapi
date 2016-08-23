@@ -30,9 +30,6 @@ public class Schedule {
 
     private static Log LOGGER = LogFactory.getLog(Schedule.class);
 
-    //利用该类进行基本认证
-    SecurityFilter filter = new SecurityFilter();
-
     //将请求注入
     @Context
     ContainerRequest cr;
@@ -51,7 +48,7 @@ public class Schedule {
     public cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule getIt(ScheduleParam scheduleParam){
 
 
-        filter.filter(cr);
+        SecurityFilter.filter(cr);
 
         LOGGER.info("Schedule => " + scheduleParam.toString());
 

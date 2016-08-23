@@ -40,7 +40,7 @@ public class ReportIssue {
     public String getIt(Issue issue) {
 
         /* 认证 */
-        new SecurityFilter().filter(cr);
+        SecurityFilter.filter(cr);
 
         LOGGER.info("ReportIssue => " + issue.toString());
 

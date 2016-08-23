@@ -2,6 +2,8 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.constant;
 
 /**
  * Created by 张孟尧 on 2016/1/10.
+ *
+ * Modified by chensiding@gmail.com
  */
 public class Constant {
     public static final int TIMEOUT = 4000;
@@ -53,5 +55,6 @@ public class Constant {
     //查询个人基本信息
     public static final String  urlPersonalInfo ="http://jw.swu.edu.cn/jwglxt/xsxxxggl/xsgrxxwh_cxXsgrxx.html?"+
             "gnmkdmKey=N100801&sessionUserKey=";
+
 }
 

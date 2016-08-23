@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class Grade {
 
     //利用该类进行基本认证
-    SecurityFilter filter = new SecurityFilter();
+
 
     private static Log LOGGER = LogFactory.getLog(Grade.class);
     //将请求注入
@@ -50,7 +50,7 @@ public class Grade {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public GradeData getIt(SearchParam param) {
-        filter.filter(cr);
+        SecurityFilter.filter(cr);
 
         LOGGER.info("Grade => " + param.toString());
 

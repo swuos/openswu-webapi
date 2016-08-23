@@ -19,8 +19,8 @@ import java.io.IOException;
 public class SecurityFilter implements ContainerRequestFilter {
 
 	private static final String REALM = "HTTPS Example authentization";
-	private final String authName = "opensource";
-	private final String authPassword = "freedom";
+	private static final String authName = "opensource";
+	private static final String authPassword = "freedom";
 	@Context
 	UriInfo uriInfo;
 
@@ -137,7 +137,7 @@ public class SecurityFilter implements ContainerRequestFilter {
 
 	}
 
-	public ContainerRequest filter(ContainerRequest request) {
+	public static ContainerRequest filter(ContainerRequest request) {
 		String authentication = request.getHeaderString(ContainerRequest.AUTHORIZATION);
 		if (authentication == null) {
 			throw new AuthenticationException("Authentication credentials are required", REALM);

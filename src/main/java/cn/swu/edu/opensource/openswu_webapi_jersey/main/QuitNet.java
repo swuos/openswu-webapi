@@ -39,7 +39,7 @@ public class QuitNet {
     public String getIt(QuitNetParam quitNetParam){
 
 //        /* 完成认证 */
-        new SecurityFilter().filter(cr);
+        SecurityFilter.filter(cr);
 //        new AuthFilter().filter(cr);
         /* 需要立即退网 */
 
