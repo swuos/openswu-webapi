@@ -11,4 +11,9 @@ public interface Param {
 
     public String getPassword();
 
+    /*
+    实现了该接口的类必须重写toString()
+    public String toString();
+    */
+
 }

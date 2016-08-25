@@ -6,11 +6,9 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.utils;
  */
 
 
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
+import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -24,13 +22,17 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 /**
  * 这个Client中提供了doGet,doPost方法
  */
 public class Client {
 
+
+    private static Log LOGGER = LogFactory.getLog(Client.class);
 
     /*设置请求配置,设置了连接超时和读取超时*/
     private static RequestConfig requestConfig = RequestConfig.custom()
@@ -69,17 +71,15 @@ public class Client {
 
 
             } else {
+                LOGGER.error(Constant.CLIENT_ERROR);
                 return Constant.CLIENT_ERROR;
-//                log needed.
             }
 
-
         } catch (IOException e) {
+            LOGGER.error(e.getMessage() + "无法访问");
             e.printStackTrace();
             // log needed.
         }
-
-
         return response;
     }
 
@@ -113,8 +113,10 @@ public class Client {
 
 
             } catch (ClientProtocolException e) {
+                LOGGER.error(e.getMessage());
                 e.printStackTrace();
             } catch (IOException e) {
+                LOGGER.error(e.getMessage());
                 e.printStackTrace();
             }
 
@@ -135,5 +137,6 @@ public class Client {
 
         return null;
     }
+
 
 }

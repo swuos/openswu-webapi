@@ -1,5 +1,7 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
+import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardLookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
 import org.apache.commons.logging.Log;
@@ -22,20 +24,30 @@ import javax.ws.rs.core.MediaType;
 @Path("ecard")
 public class Ecard {
 
+
+    public Ecard() {
+        ecardLookup = new EcardLookup();
+    }
+
     private static Log LOGGER = LogFactory.getLog(QuitNet.class);
 
+    private Lookup ecardLookup;
+    private String response;
     @Context
     ContainerRequest cr;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public String getIt(EcardParam ecardParam) {
 
+        SecurityFilter.filter(cr);
 
-        Lookup ecardLookup;
+        LOGGER.info("Ecard => " + ecardParam.toString());
 
-        return null;
+        response = ecardLookup.lookup(ecardParam);
+
+        return response == null ? "用户名或密码错误" : response;
     }
 
 

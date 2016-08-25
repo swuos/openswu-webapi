@@ -2,8 +2,6 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.ecard;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
 
-import javax.xml.bind.annotation.XmlElement;
-
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/8/23.
  * <p>
@@ -37,5 +35,11 @@ public class EcardParam implements Param {
     @Override
     public String getSwuID() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String toString() {
+        return "cardno : " + cardno +
+                " password : " + password;
     }
 }
