@@ -12,6 +12,7 @@ import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,19 +51,15 @@ public class EcardLookup implements Lookup {
         } else {
             client.doGet(url);
         }
-        // 交易记录总是21页，最后一页为最新的交易记录，故从第21页开始查起。
-        for (int offset = 21; offset > 0; offset--) {
+        // 获取交易记录页数
+        int offset = 0;
+        Matcher pageMatcher = Pattern.compile("<font color=red>[\\s]*([\\S]*)[\\s]*</font>").matcher(client.doGet(Constant.urlEcardFinance));
+        if (pageMatcher.find()) {
+            offset = Integer.valueOf(pageMatcher.group(1));
+        }
+        for (; offset > 0; offset--) {
             String financeUrl = Constant.urlEcardFinance + "?offset=" + offset;
-//            financePageParse(client.doGet(financeUrl));
-            Thread t = new Thread(() -> {
-                financePageParse(client.doGet(financeUrl));
-            });
-            t.start();
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            financePageParse(client.doGet(financeUrl));
         }
 
         //对消费记录按时间排序
@@ -79,7 +76,6 @@ public class EcardLookup implements Lookup {
     private void financePageParse(String htmlFormatText) {
         try {
             String html = new String(htmlFormatText.getBytes("ISO-8859-1"), "gb2312");
-//            System.out.println(html);
 
             Pattern p1 = Pattern.compile("<TD height=\"26\" align=left>[\\s]*(.*)[\\s]*</TD>");
             Pattern p2 = Pattern.compile("<TD align=left>[\\s]*(.*)[\\s]*</TD>");
@@ -107,19 +103,15 @@ public class EcardLookup implements Lookup {
                     && placeMatcher.find(moneyAfterTradeMatcher.end())) {
 
 
-                String g1 = timeMatcher.group(1);
-                String g2 = typeMatcher.group(1);
-                String g3 = frequencyMatcher.group(1);
-                String g4 = moneyBeforeTradeMatcher.group(1);
-                String g5 = tradeMoneyMatcher.group(1);
-                String g6 = moneyAfterTradeMatcher.group(1);
-                String g7 = placeMatcher.group(1);
+                String time = timeMatcher.group(1);
+                String type = typeMatcher.group(1);
+                String frequency = frequencyMatcher.group(1);
+                String moneyBeforeTrade = moneyBeforeTradeMatcher.group(1);
+                String tradeMoney = tradeMoneyMatcher.group(1);
+                String moneyAfterTrade = moneyAfterTradeMatcher.group(1);
+                String place = placeMatcher.group(1);
 
-                resList.add(new EcardInformation(g1, g2, g3, g4, g5, g6, g7));
-
-//                System.out.println(g1+g2+" "+g3+" "+g4+" "+g5+" "+g6+" "+g7);
-
-
+                resList.add(new EcardInformation(time, type, frequency, moneyBeforeTrade, tradeMoney, moneyAfterTrade, place));
             }
 
         } catch (UnsupportedEncodingException e) {
@@ -141,7 +133,6 @@ public class EcardLookup implements Lookup {
             Matcher valueMatcher = Pattern
                     .compile("<div align=\"left\">[\\s]*([\\S]*)[\\s]*</div>")
                     .matcher(html);
-
 
 
             String att, value;
@@ -207,22 +198,7 @@ public class EcardLookup implements Lookup {
 
     //对消费记录按时间排序
     private void sortList() {
-//        Collections.sort(resList,(o1,o2)->{
-//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//            try {
-//                if(df.parse(o1.getTime()).getTime()<df.parse(o2.getTime()).getTime()){
-//                    return 1;
-//                }else if(df.parse(o1.getTime()).getTime()>df.parse(o2.getTime()).getTime()){
-//                    return -1;
-//                }else{
-//                    return 0;
-//                }
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//            return 0;
-//        });
-        resList.parallelStream().sorted((o1, o2) -> {
+        Collections.sort(resList, (o1, o2) -> {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             try {
                 if (df.parse(o1.getTime()).getTime() < df.parse(o2.getTime()).getTime()) {
