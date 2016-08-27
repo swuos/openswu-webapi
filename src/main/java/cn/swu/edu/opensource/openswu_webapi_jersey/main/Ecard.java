@@ -45,7 +45,11 @@ public class Ecard {
 
         LOGGER.info("Ecard => " + ecardParam.toString());
 
+
+        long start = System.currentTimeMillis();
         response = ecardLookup.lookup(ecardParam);
+        System.out.println("time : " + (System.currentTimeMillis() - start));
+
 
         return response == null ? "用户名或密码错误" : response;
     }

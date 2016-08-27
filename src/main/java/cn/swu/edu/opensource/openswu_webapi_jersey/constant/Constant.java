@@ -56,7 +56,10 @@ public class Constant {
     public static final String  urlPersonalInfo ="http://jw.swu.edu.cn/jwglxt/xsxxxggl/xsgrxxwh_cxXsgrxx.html?"+
             "gnmkdmKey=N100801&sessionUserKey=";
 
-    //查询校园卡
+    // 查询校园卡个人信息
     public static final String urlEcard = "http://ecard.swu.edu.cn/search/oracle/queryresult.asp?cardno={0}&password={1}";
+    // 查询校园卡交易明细
+    public static final String urlEcardFinance = "http://ecard.swu.edu.cn/search/oracle/finance.asp";
+
 }
 

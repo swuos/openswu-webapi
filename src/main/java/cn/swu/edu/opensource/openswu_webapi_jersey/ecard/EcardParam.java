@@ -12,6 +12,16 @@ public class EcardParam implements Param {
     private String cardno;
     private String password;
 
+    //默认不查询个人信息
+    private Boolean personal = false;
+
+    public Boolean getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Boolean personal) {
+        this.personal = personal;
+    }
 
     public String getCardno() {
         return cardno;
@@ -40,6 +50,7 @@ public class EcardParam implements Param {
     @Override
     public String toString() {
         return "cardno : " + cardno +
-                " password : " + password;
+                " password : " + password +
+                " personal : " + personal;
     }
 }
