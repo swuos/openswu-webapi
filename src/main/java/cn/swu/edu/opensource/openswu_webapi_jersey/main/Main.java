@@ -1,6 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.AuthFilter;
 import org.apache.log4j.PropertyConfigurator;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -26,7 +25,7 @@ public class Main {
         final ResourceConfig rc = new ResourceConfig().packages("cn.swu.edu.opensource.openswu_webapi_jersey");
 
         // register authentication filter
-//        rc.register(AuthFilter.class);
+//        rc.register(AuthenticationFilter.class);
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

@@ -1,23 +1,16 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.AuthFilter;
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.Quit;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.QuitNetParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.quitnet.QuitNetQueue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glassfish.jersey.server.ContainerRequest;
-import sun.nio.cs.ext.GBK;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/5/29.
@@ -30,17 +23,14 @@ public class QuitNet {
 
     private static Log LOGGER = LogFactory.getLog(QuitNet.class);
 
-    @Context
-    ContainerRequest cr;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt(QuitNetParam quitNetParam){
 
-//        /* 完成认证 */
-        SecurityFilter.filter(cr);
-//        new AuthFilter().filter(cr);
+
+//        new AuthenticationFilter().filter(cr);
         /* 需要立即退网 */
 
         LOGGER.info("QuitNet => " + quitNetParam.toString());

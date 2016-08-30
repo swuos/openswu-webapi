@@ -1,18 +1,15 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardLookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -33,15 +30,11 @@ public class Ecard {
 
     private Lookup ecardLookup;
     private String response;
-    @Context
-    ContainerRequest cr;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt(EcardParam ecardParam) {
-
-        SecurityFilter.filter(cr);
 
         LOGGER.info("Ecard => " + ecardParam.toString());
 

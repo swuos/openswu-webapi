@@ -77,8 +77,6 @@ public class Client {
 
         } catch (IOException e) {
             LOGGER.error(e.getMessage() + "无法访问");
-            e.printStackTrace();
-            // log needed.
         }
         return response;
     }

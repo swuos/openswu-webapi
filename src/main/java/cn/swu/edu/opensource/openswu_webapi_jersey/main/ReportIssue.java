@@ -1,22 +1,17 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.issues.Issue;
-import cn.swu.edu.opensource.openswu_webapi_jersey.login.Login;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -29,8 +24,6 @@ import java.util.Date;
 @Path("reportIssue")
 public class ReportIssue {
 
-    @Context
-    ContainerRequest cr;
 
     private static Log LOGGER = LogFactory.getLog(ReportIssue.class);
 
@@ -38,9 +31,6 @@ public class ReportIssue {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt(Issue issue) {
-
-        /* 认证 */
-        SecurityFilter.filter(cr);
 
         LOGGER.info("ReportIssue => " + issue.toString());
 

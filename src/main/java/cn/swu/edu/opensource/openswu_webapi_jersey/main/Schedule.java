@@ -1,21 +1,16 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.SwuSchedule;
 import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.logging.impl.Log4JLogger;
-import org.glassfish.jersey.server.ContainerRequest;
 
-import javax.sound.midi.SysexMessage;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -30,12 +25,6 @@ public class Schedule {
 
     private static Log LOGGER = LogFactory.getLog(Schedule.class);
 
-    //将请求注入
-    @Context
-    ContainerRequest cr;
-
-
-
     /**
      * json转化为java对象，java对象转换为json的过程由框架完成。
      * @param scheduleParam 接受json格式参数。参数javabean为ScheduleParam
@@ -46,9 +35,6 @@ public class Schedule {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule getIt(ScheduleParam scheduleParam){
-
-
-        SecurityFilter.filter(cr);
 
         LOGGER.info("Schedule => " + scheduleParam.toString());
 

@@ -1,23 +1,19 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.GradeData;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SearchParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SwuGrades;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.TotalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.Login;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.JsonHandler;
 import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 
@@ -34,9 +30,6 @@ public class Grade {
 
 
     private static Log LOGGER = LogFactory.getLog(Grade.class);
-    //将请求注入
-    @Context
-    ContainerRequest cr;
 
     /**
      * 处理POST请求。
@@ -50,7 +43,6 @@ public class Grade {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public GradeData getIt(SearchParam param) {
-        SecurityFilter.filter(cr);
 
         LOGGER.info("Grade => " + param.toString());
 

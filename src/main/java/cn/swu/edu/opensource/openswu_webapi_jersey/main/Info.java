@@ -1,6 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.auth.SecurityFilter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.InfoParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.PersonalInfo;
@@ -8,13 +7,11 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.info.SwuInfo;
 import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glassfish.jersey.server.ContainerRequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -28,15 +25,13 @@ import javax.ws.rs.core.MediaType;
 public class Info {
 
     private static Log LOGGER = LogFactory.getLog(Info.class);
-    //将请求注入
-    @Context
-    ContainerRequest cr;
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PersonalInfo getIt(InfoParam infoParam){
-        SecurityFilter.filter(cr);
+
         String response = null;
 
         LOGGER.info("Info => " + infoParam.toString());
