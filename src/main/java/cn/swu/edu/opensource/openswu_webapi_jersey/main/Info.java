@@ -1,6 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.InfoParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.PersonalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.SwuInfo;
@@ -36,12 +35,9 @@ public class Info {
 
         LOGGER.info("Info => " + infoParam.toString());
 
-        try {
             SwuInfo swuInfo  = new SwuInfo(infoParam);
             response = swuInfo.getInfo();
-        } catch (ParamException e) {
-            LOGGER.error(e.getMessage());
-        }
+
 
         return new Gson().fromJson(response, PersonalInfo.class);
     }

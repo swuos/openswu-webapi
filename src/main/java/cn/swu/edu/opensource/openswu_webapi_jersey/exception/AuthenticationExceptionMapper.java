@@ -35,23 +35,35 @@
  * holder.
  */
 
-package cn.swu.edu.opensource.openswu_webapi_jersey.auth;
+package cn.swu.edu.opensource.openswu_webapi_jersey.exception;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
 /**
- * <p>A runtime exception representing a failure to provide correct
- * authentication credentials.</p>
+ * <p>Map an authentication exception to an HTTP 401 response, optionally
+ * including the realm for a credentials challenge at the client.</p>
  */
-public class AuthenticationException extends RuntimeException {
+@Provider
+public class AuthenticationExceptionMapper implements ExceptionMapper<AuthenticationException> {
 
-    public AuthenticationException(String message, String realm) {
-        super(message);
-        this.realm = realm;
-    }
-
-    private String realm = null;
-
-    public String getRealm() {
-        return this.realm;
+    public Response toResponse(AuthenticationException e) {
+        if (e.getRealm() != null) {
+            return Response.
+                    status(Status.UNAUTHORIZED).
+                    header("WWW-Authenticate", "Basic realm=\"" + e.getRealm() + "\"").
+                    type("text/plain").
+                    entity(e.getMessage()).
+                    build();
+        } else {
+            return Response.
+                    status(Status.UNAUTHORIZED).
+                    type("text/plain").
+                    entity(e.getMessage()).
+                    build();
+        }
     }
 
 }

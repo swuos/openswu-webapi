@@ -1,6 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.SwuSchedule;
 import com.google.gson.Gson;
@@ -40,12 +39,9 @@ public class Schedule {
 
         String response = null;
 
-        try {
             SwuSchedule swuSchedule  = new SwuSchedule(scheduleParam);
             response = swuSchedule.getSchedule();
-        } catch (ParamException e) {
-            LOGGER.error(e.getMessage());
-        }
+
 
         return new Gson().fromJson(response, cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule.class);
     }

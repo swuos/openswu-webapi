@@ -1,15 +1,12 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.schedule;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
-import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
-import cn.swu.edu.opensource.openswu_webapi_jersey.login.Login;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.LoginToEms;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import sun.net.www.http.HttpClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +19,7 @@ public class SwuSchedule implements Lookup{
     private String schedule;
     private Client client;
 
-    public SwuSchedule(Param param) throws ParamException {
+    public SwuSchedule(Param param) {
 
         LoginToEms loginToEms = new LoginToEms(param);
 

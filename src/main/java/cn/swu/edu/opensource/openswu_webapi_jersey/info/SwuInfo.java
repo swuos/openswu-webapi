@@ -1,7 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.info;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
-import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParamException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.LoginToEms;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
@@ -23,7 +22,7 @@ public class SwuInfo implements Lookup {
     private String personalInfo;
     private Client client;
 
-    public SwuInfo(Param param) throws ParamException {
+    public SwuInfo(Param param) {
 
         LoginToEms loginToEms = new LoginToEms(param);
 
