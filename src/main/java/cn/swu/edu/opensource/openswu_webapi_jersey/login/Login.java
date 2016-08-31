@@ -1,18 +1,19 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.login;
 
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.TotalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by csd on 2016/1/27.
+ * <p>
+ * 完成西南大学统一认证
  */
 public class Login {
 
@@ -27,15 +28,24 @@ public class Login {
         this.response = this.doLogin(swuID, password);
     }
 
+    /**
+     * 通过西南大学统一认证，认证未通过会返回“连接问题”等等错误提示。
+     *
+     * @return 该用户名和密码通过认证的结果。
+     */
     private String doLogin(String name, String password) {
         List<NameValuePair> nameValuePairs = new ArrayList<>();
 
-        nameValuePairs.add(new BasicNameValuePair("goto", Constant.gotos));
-        nameValuePairs.add(new BasicNameValuePair("gotoOnFail", Constant.gotoOnFail));
-        nameValuePairs.add(new BasicNameValuePair("Login.Token1", name));
-        nameValuePairs.add(new BasicNameValuePair("Login.Token2", password));
+        nameValuePairs.add(new BasicNameValuePair("IDToken0", ""));
+        nameValuePairs.add(new BasicNameValuePair("IDToken1", name));
+        nameValuePairs.add(new BasicNameValuePair("IDToken2", password));
+        nameValuePairs.add(new BasicNameValuePair("IDButton", "Submit"));
+        nameValuePairs.add(new BasicNameValuePair("goto", "aHR0cDovL2p3LnN3dS5lZHUuY24vandnbHh0L2lkc3Rhci9pbmRleC5qc3A="));
+        nameValuePairs.add(new BasicNameValuePair("encoded", "true"));
+        nameValuePairs.add(new BasicNameValuePair("gx_charset", "UTF-8"));
 
-        return this.client.doPost(Constant.urlLogin, nameValuePairs);
+
+        return this.client.doPost(Constant.urlUnifiedAuthentication, nameValuePairs);
     }
 
     public Client getClient() {

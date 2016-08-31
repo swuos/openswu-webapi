@@ -19,12 +19,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
     private static final String authName = "opensource";
     private static final String authPassword = "freedom";
 
-
-    final String tokenQueryString =
-            "select * " +
-                    "from developer " +
-                    "where username= admin and token = ?";
-
     @Override
     public void filter(ContainerRequestContext containerRequestContext) {
         String authentication = containerRequestContext.getHeaderString("Authorization");

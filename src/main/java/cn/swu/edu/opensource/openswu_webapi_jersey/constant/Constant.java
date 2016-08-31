@@ -60,6 +60,9 @@ public class Constant {
     public static final String urlEcard = "http://ecard.swu.edu.cn/search/oracle/queryresult.asp?cardno={0}&password={1}";
     // 查询校园卡交易明细
     public static final String urlEcardFinance = "http://ecard.swu.edu.cn/search/oracle/finance.asp";
+    // 西南大学统一认证
+    public static final String urlUnifiedAuthentication = "http://ids1.swu.edu.cn:81/amserver/UI/Login";
+
 
 }
 
