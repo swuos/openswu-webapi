@@ -18,7 +18,7 @@ public class SwuGrades {
         this.gradesLookuper = new GradesLookuper(client);
     }
 
-    public String lookup(SearchParam searchParam) {
+    public String lookup(SearchParameter searchParam) {
 
         return this.gradesLookuper.lookup(searchParam);
     }

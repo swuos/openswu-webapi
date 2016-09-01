@@ -3,7 +3,7 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.ecard;
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
  */
 public class EcardLookup implements Lookup {
 
-    private EcardParam ecardParam;
+    private EcardParameter ecardParam;
     private Client client;
 
     //将个人信息页面解析的结果存放到map中,用gson将map转换为json返回。
@@ -38,8 +38,8 @@ public class EcardLookup implements Lookup {
     }
 
     @Override
-    public String lookup(Param param) {
-        ecardParam = (EcardParam) param;
+    public String lookup(Parameter parameter) {
+        ecardParam = (EcardParameter) parameter;
 
         //Constant.urlEcard = "http://ecard.swu.edu.cn/search/oracle/queryresult.asp?cardno={0}&password={1}"
         String url = MessageFormat.format(Constant.urlEcard, ecardParam.getCardno(), ecardParam.getPassword());

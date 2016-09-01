@@ -1,13 +1,13 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.ecard;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/8/23.
  * <p>
  * Email : sidingchan@gmail.com
  */
-public class EcardParam implements Param {
+public class EcardParameter implements Parameter {
 
     private String cardno;
     private String password;

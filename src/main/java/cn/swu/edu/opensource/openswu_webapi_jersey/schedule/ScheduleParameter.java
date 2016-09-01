@@ -1,6 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.schedule;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class ScheduleParam implements Param{
+public class ScheduleParameter implements Parameter {
 
     //学年
     public Integer xn;
@@ -22,7 +22,8 @@ public class ScheduleParam implements Param{
     //密码
     public String password;
 
-    public ScheduleParam(){}
+    public ScheduleParameter() {
+    }
 
     public Integer getXn() {
         return xn;

@@ -1,6 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParam;
+import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParameter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.SwuSchedule;
 import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
@@ -33,7 +33,7 @@ public class Schedule {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule getIt(ScheduleParam scheduleParam){
+    public cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule getIt(ScheduleParameter scheduleParam) {
 
         LOGGER.info("Schedule => " + scheduleParam.toString());
 

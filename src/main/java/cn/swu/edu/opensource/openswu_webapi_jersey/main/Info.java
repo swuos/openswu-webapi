@@ -1,6 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.info.InfoParam;
+import cn.swu.edu.opensource.openswu_webapi_jersey.info.InfoParameter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.PersonalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.info.SwuInfo;
 import com.google.gson.Gson;
@@ -29,7 +29,7 @@ public class Info {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PersonalInfo getIt(InfoParam infoParam){
+    public PersonalInfo getIt(InfoParameter infoParam) {
 
         String response = null;
 

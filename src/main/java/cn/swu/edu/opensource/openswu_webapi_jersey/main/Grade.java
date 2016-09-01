@@ -2,7 +2,7 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.GradeData;
-import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SearchParam;
+import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SearchParameter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.SwuGrades;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.TotalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.Login;
@@ -42,7 +42,7 @@ public class Grade {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public GradeData getIt(SearchParam param) {
+    public GradeData getIt(SearchParameter param) {
 
         LOGGER.info("Grade => " + param.toString());
 

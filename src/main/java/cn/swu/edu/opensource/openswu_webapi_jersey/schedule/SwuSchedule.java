@@ -4,7 +4,7 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.LoginToEms;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -19,13 +19,13 @@ public class SwuSchedule implements Lookup{
     private String schedule;
     private Client client;
 
-    public SwuSchedule(Param param) {
+    public SwuSchedule(Parameter parameter) {
 
-        LoginToEms loginToEms = new LoginToEms(param);
+        LoginToEms loginToEms = new LoginToEms(parameter);
 
         this.client = loginToEms.getClient();
 
-        this.schedule = lookup(param);
+        this.schedule = lookup(parameter);
     }
 
     public String getSchedule(){
@@ -33,12 +33,12 @@ public class SwuSchedule implements Lookup{
     }
 
     @Override
-    public String lookup(Param param) {
-        ScheduleParam scheduleParam = null;
+    public String lookup(Parameter parameter) {
+        ScheduleParameter scheduleParam = null;
         /*
             强制类型转换一下，类型错误就返回空串
          */
-        if(param instanceof ScheduleParam) scheduleParam = (ScheduleParam)param;
+        if (parameter instanceof ScheduleParameter) scheduleParam = (ScheduleParameter) parameter;
         else return "";
 
         List<NameValuePair> nameValuePair = new ArrayList<>();

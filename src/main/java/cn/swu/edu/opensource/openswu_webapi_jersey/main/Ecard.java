@@ -1,7 +1,7 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardLookup;
-import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardParam;
+import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardParameter;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,7 +34,7 @@ public class Ecard {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String getIt(EcardParam ecardParam) {
+    public String getIt(EcardParameter ecardParam) {
 
         LOGGER.info("Ecard => " + ecardParam.toString());
 

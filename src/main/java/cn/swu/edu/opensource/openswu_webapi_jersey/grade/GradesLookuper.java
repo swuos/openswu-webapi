@@ -1,10 +1,9 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.grade;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
-import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.ScheduleParam;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -26,7 +25,7 @@ public class GradesLookuper implements Lookup {
     }
 //
 //    @Override
-//    public String lookup(SearchParam searchParam) {
+//    public String lookup(SearchParameter searchParam) {
 //        List<NameValuePair> nameValuePair = new ArrayList<>();
 //
 //        nameValuePair.add(new BasicNameValuePair("_search", "false"));
@@ -50,10 +49,10 @@ public class GradesLookuper implements Lookup {
 //    }
 
     @Override
-    public String lookup(Param param) {
-        SearchParam searchParam =new SearchParam();
-        if(param instanceof SearchParam) {
-            searchParam = (SearchParam) param;
+    public String lookup(Parameter parameter) {
+        SearchParameter searchParam = new SearchParameter();
+        if (parameter instanceof SearchParameter) {
+            searchParam = (SearchParameter) parameter;
         }
         //这里应该有bug
         List<NameValuePair> nameValuePair = new ArrayList<>();
@@ -73,7 +72,7 @@ public class GradesLookuper implements Lookup {
         //提交的表单中， 学期的对应关系是这样的，3->1 12->2 16->3 所以需要转换一下
         nameValuePair.add(new BasicNameValuePair("xqm", "" + Constant.ALL_XQM[searchParam.getXqm()]));
 
-        String response = this.client.doPost(Constant.urlGradeSearch + param.getSwuID(), nameValuePair);
+        String response = this.client.doPost(Constant.urlGradeSearch + parameter.getSwuID(), nameValuePair);
 
         return response;
     }

@@ -1,7 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.requestHeaders;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.schedule.Schedule;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
 import org.apache.http.NameValuePair;
 
 import java.util.List;

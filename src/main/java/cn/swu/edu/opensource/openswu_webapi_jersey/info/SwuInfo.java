@@ -4,7 +4,7 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.login.LoginToEms;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Param;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -22,22 +22,22 @@ public class SwuInfo implements Lookup {
     private String personalInfo;
     private Client client;
 
-    public SwuInfo(Param param) {
+    public SwuInfo(Parameter parameter) {
 
-        LoginToEms loginToEms = new LoginToEms(param);
+        LoginToEms loginToEms = new LoginToEms(parameter);
 
         this.client = loginToEms.getClient();
-        this.personalInfo = lookup(param);
+        this.personalInfo = lookup(parameter);
     }
 
     public String getInfo(){
         return this.personalInfo;
     }
 
-    public String lookup(Param param) {
+    public String lookup(Parameter parameter) {
         //转换类型
-        InfoParam infoParam = null;
-        if(param instanceof InfoParam) infoParam = (InfoParam)param;
+        InfoParameter infoParam = null;
+        if (parameter instanceof InfoParameter) infoParam = (InfoParameter) parameter;
         else return "";
 
         //加入POST DATA
