@@ -20,7 +20,7 @@ import java.io.*;
 @Provider
 public class ParameterValidator implements ContainerRequestFilter {
 
-    StringBuffer entity;
+//    StringBuffer entity;
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
