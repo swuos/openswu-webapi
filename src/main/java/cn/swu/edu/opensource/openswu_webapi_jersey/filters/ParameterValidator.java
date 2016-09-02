@@ -24,7 +24,7 @@ public class ParameterValidator implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        System.out.println("validator in");
+//        System.out.println("validator in");
         if (requestContext.hasEntity()) {
             // TODO add the deeply parameters validate method.
             // for example , parameter length and so on.
