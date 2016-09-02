@@ -2,7 +2,7 @@
 // * To change this template, choose Tools | Templates
 // * and open the template in the editor.
 // */
-//package cn.swu.edu.opensource.openswu_webapi_jersey.auth;
+//package cn.swu.edu.opensource.openswu_webapi_jersey.filters;
 //
 //import org.glassfish.jersey.server.ContainerRequest;
 //

@@ -1,6 +1,6 @@
-package cn.swu.edu.opensource.openswu_webapi_jersey.auth;
+package cn.swu.edu.opensource.openswu_webapi_jersey.filters;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.exception.AuthenticationException;
+import cn.swu.edu.opensource.openswu_webapi_jersey.exceptions.AuthenticationException;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;

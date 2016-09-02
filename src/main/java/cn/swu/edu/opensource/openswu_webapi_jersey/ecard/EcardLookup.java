@@ -2,8 +2,8 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.ecard;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Lookup;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;

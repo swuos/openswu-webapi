@@ -52,7 +52,7 @@
  * limitations under the License.
  */
 
-package cn.swu.edu.opensource.openswu_webapi_jersey.auth;
+package cn.swu.edu.opensource.openswu_webapi_jersey.filters;
 
 /**
  * This class provides encode/decode for RFC 2045 Base64 as

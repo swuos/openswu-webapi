@@ -1,9 +1,9 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.login;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
-import cn.swu.edu.opensource.openswu_webapi_jersey.exception.ParameterException;
+import cn.swu.edu.opensource.openswu_webapi_jersey.exceptions.ParameterException;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/5/8.

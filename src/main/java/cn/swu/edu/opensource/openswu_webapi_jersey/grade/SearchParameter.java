@@ -4,7 +4,7 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.grade;
  * Created by csd on 2016/3/2.
  */
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 /**
  *  The POJO supported by MOXy

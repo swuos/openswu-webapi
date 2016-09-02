@@ -1,6 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.schedule;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

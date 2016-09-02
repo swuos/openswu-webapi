@@ -1,7 +1,7 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.info;
 
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 /**
  * Created by mxd on 2016/5/18.

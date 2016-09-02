@@ -1,4 +1,4 @@
-package cn.swu.edu.opensource.openswu_webapi_jersey.exception;
+package cn.swu.edu.opensource.openswu_webapi_jersey.exceptions;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -10,7 +10,7 @@ import javax.ws.rs.ext.Provider;
  * Email : sidingchan@gmail.com
  * <p>
  * <p>
- * <p>Map an authentication exception to an HTTP 401 response, optionally
+ * <p>Map an authentication exceptions to an HTTP 401 response, optionally
  * including the realm for a credentials challenge at the client.</p>
  */
 

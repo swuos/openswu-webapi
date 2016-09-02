@@ -2,7 +2,7 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.main;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardLookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.ecard.EcardParameter;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Lookup;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Lookup;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -22,14 +22,13 @@ import javax.ws.rs.core.MediaType;
 public class Ecard {
 
 
+    private static Log LOGGER = LogFactory.getLog(QuitNet.class);
+    private Lookup ecardLookup;
+    private String response;
+
     public Ecard() {
         ecardLookup = new EcardLookup();
     }
-
-    private static Log LOGGER = LogFactory.getLog(QuitNet.class);
-
-    private Lookup ecardLookup;
-    private String response;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -38,11 +37,7 @@ public class Ecard {
 
         LOGGER.info("Ecard => " + ecardParam.toString());
 
-
-        long start = System.currentTimeMillis();
         response = ecardLookup.lookup(ecardParam);
-        System.out.println("time : " + (System.currentTimeMillis() - start));
-
 
         return response == null ? "用户名或密码错误" : response;
     }

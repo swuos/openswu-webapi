@@ -1,6 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.library;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/8/31.
