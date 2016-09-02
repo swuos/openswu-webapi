@@ -64,6 +64,8 @@ public class Constant {
     public static final String urlUnifiedAuthentication = "http://ids1.swu.edu.cn:81/amserver/UI/Login";
     // 图书馆登录
     public static final String urlLibrary = "http://mylib.swu.edu.cn/do.jsp?ac=c64db6a3accfd5d750e9b26c1ad46d76&ref";
+    // 图书馆借阅历史
+
 
 }
 

@@ -29,6 +29,7 @@ import java.util.List;
 /**
  * 这个Client中提供了doGet,doPost方法
  */
+// FIXME change the Client to factoryMode
 public class Client {
 
 
