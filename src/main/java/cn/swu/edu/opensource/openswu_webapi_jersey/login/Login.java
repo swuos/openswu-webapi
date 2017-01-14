@@ -73,9 +73,9 @@ public class Login {
         /*判断是否正确获得结果*/
         if (!response.contains(Constant.NO_NET)) {
            /*对结果进行切割获得姓名*/
-            String nametmple = response.substring(response.indexOf("heading\">"));
+//            String nametmple = response.substring(response.indexOf("heading\">"));
             /*将结果保存进totalInfo*/
-            totalInfo.setName(nametmple.substring(9, nametmple.indexOf("</h4>")));
+//            totalInfo.setName(nametmple.substring(9, nametmple.indexOf("</h4>")));
         } else return response;
         return Constant.CLIENT_OK;
     }

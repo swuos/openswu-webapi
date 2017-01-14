@@ -1,5 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.grade;
 
+import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Lookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 
 /**
@@ -8,7 +9,7 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 public class SwuGrades {
 
     //    private Client client ;
-    private GradesLookuper gradesLookuper;
+    private Lookup gradesLookuper;
     // 预留
     private GradeHandler gradeHandler;
 
