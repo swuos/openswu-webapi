@@ -5,7 +5,6 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.exceptions.ParameterException
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.ext.Provider;
-import java.io.*;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/9/1.
@@ -32,7 +31,6 @@ public class ParameterValidator implements ContainerRequestFilter {
             throw new ParameterException("Parameters are required.");
         }
     }
-
 
 //    public void setEntity(ContainerRequestContext requestContext){
 //

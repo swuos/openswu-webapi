@@ -1,9 +1,9 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.ecard;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Lookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
@@ -93,7 +93,6 @@ public class EcardLookup implements Lookup {
             Matcher moneyAfterTradeMatcher = p6.matcher(html);
             Matcher placeMatcher = p7.matcher(html);
 
-
             while (timeMatcher.find()
                     && typeMatcher.find(timeMatcher.end())
                     && frequencyMatcher.find(typeMatcher.end())
@@ -101,7 +100,6 @@ public class EcardLookup implements Lookup {
                     && tradeMoneyMatcher.find(moneyBeforeTradeMatcher.end())
                     && moneyAfterTradeMatcher.find(tradeMoneyMatcher.end())
                     && placeMatcher.find(moneyAfterTradeMatcher.end())) {
-
 
                 String time = timeMatcher.group(1);
                 String type = typeMatcher.group(1);
@@ -118,7 +116,6 @@ public class EcardLookup implements Lookup {
             e.printStackTrace();
         }
 
-
     }
 
     private void showPersonalPageParse(String htmlFormatText) {
@@ -133,7 +130,6 @@ public class EcardLookup implements Lookup {
             Matcher valueMatcher = Pattern
                     .compile("<div align=\"left\">[\\s]*([\\S]*)[\\s]*</div>")
                     .matcher(html);
-
 
             String att, value;
             while (attMatcher.find() && valueMatcher.find(attMatcher.end())) {
@@ -188,8 +184,9 @@ public class EcardLookup implements Lookup {
                         att = "";
                         break;
                 }
-                if (!att.equals(""))
+                if (!att.equals("")) {
                     resMap.put(att, value);
+                }
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

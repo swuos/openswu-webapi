@@ -74,7 +74,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
             }
         }
 
-
     }
 
 }

@@ -1,6 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.library;
 
-import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Lookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 /**

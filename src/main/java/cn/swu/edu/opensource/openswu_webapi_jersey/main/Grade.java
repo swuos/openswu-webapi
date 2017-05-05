@@ -10,24 +10,23 @@ import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.util.ArrayList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 
 /**
  * 查询成绩的类。由于直接由之前版本迁移而来，所以代码可能存在冗余，项目发展到一定时候会回过头来重新修改这个模块。
  * 也希望任何人自行修改。
- * @author chensiding/chensiding@qq.com
  *
+ * @author chensiding/chensiding@qq.com
  */
 @Path("grade")
 public class Grade {
 
     //利用该类进行基本认证
-
 
     private static Log LOGGER = LogFactory.getLog(Grade.class);
 
@@ -54,7 +53,7 @@ public class Grade {
             return responseForError("用户不存在或密码错误");
         }
         /*检查学年和学期号是否合法*/
-        if (!(contain(new String[]{"1", "2", "3"}, param.getXqm())
+        if (!(contain(new String[] {"1", "2", "3"}, param.getXqm())
                 && contain(Constant.ALL_XNM, param.getXnm()))) {
             return responseForError("学年或学期号不合法");
         }

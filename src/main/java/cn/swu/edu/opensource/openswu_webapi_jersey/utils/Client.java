@@ -5,7 +5,6 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.utils;
  * modified by csd on 2016/1/27.
  */
 
-
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +31,6 @@ import java.util.List;
 // FIXME change the Client to factoryMode
 public class Client {
 
-
     private static Log LOGGER = LogFactory.getLog(Client.class);
 
     /*设置请求配置,设置了连接超时和读取超时*/
@@ -43,7 +41,6 @@ public class Client {
 
     private HttpClientBuilder httpClientBuilder;
     private CloseableHttpClient httpClient;
-
 
     public Client() {
         /*初始化连接*/
@@ -70,7 +67,6 @@ public class Client {
 
                 EntityUtils.consume(httpEntity);
 
-
             } else {
                 LOGGER.error(Constant.CLIENT_ERROR);
                 return Constant.CLIENT_ERROR;
@@ -82,14 +78,12 @@ public class Client {
         return response;
     }
 
-
     public String doPost(String url, List<NameValuePair> nameValuePairList) {
 
         String response;
         HttpPost httpPost = new HttpPost(url);
         //超时设置
         httpPost.setConfig(requestConfig);
-
 
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairList));
@@ -110,7 +104,6 @@ public class Client {
                     return Constant.CLIENT_ERROR;
                 }
 
-
             } catch (ClientProtocolException e) {
                 LOGGER.error(e.getMessage());
                 e.printStackTrace();
@@ -119,17 +112,12 @@ public class Client {
                 e.printStackTrace();
             }
 
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-
         return url;
 
-
     }
-
-
 
 }

@@ -1,6 +1,5 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.login;
 
-
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
 import cn.swu.edu.opensource.openswu_webapi_jersey.grade.TotalInfo;
 import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
@@ -16,7 +15,6 @@ import java.util.List;
  * 完成西南大学统一认证
  */
 public class Login {
-
 
     private Client client = new Client();
     private String response = null;
@@ -43,7 +41,6 @@ public class Login {
         nameValuePairs.add(new BasicNameValuePair("goto", "aHR0cDovL2p3LnN3dS5lZHUuY24vandnbHh0L2lkc3Rhci9pbmRleC5qc3A="));
         nameValuePairs.add(new BasicNameValuePair("encoded", "true"));
         nameValuePairs.add(new BasicNameValuePair("gx_charset", "UTF-8"));
-
 
         return this.client.doPost(Constant.urlUnifiedAuthentication, nameValuePairs);
     }
@@ -76,7 +73,9 @@ public class Login {
 //            String nametmple = response.substring(response.indexOf("heading\">"));
             /*将结果保存进totalInfo*/
 //            totalInfo.setName(nametmple.substring(9, nametmple.indexOf("</h4>")));
-        } else return response;
+        } else {
+            return response;
+        }
         return Constant.CLIENT_OK;
     }
 }

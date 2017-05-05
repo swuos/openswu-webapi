@@ -1,8 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.issues;
 
-import javax.ws.rs.DefaultValue;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by 西南大学开源协会 陈思定  on 2016/5/18.
@@ -13,7 +11,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 public class Issue {
-
 
     //未post学号数据时，设置默认学号位数和正常学号相同 对齐格式
     @XmlElement(defaultValue = "xxxxxxxxxxxxxxx")
@@ -56,7 +53,6 @@ public class Issue {
 
         this.contact = contact;
     }
-
 
     @Override
     public String toString() {

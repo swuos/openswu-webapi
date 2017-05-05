@@ -11,8 +11,7 @@ import java.util.List;
  */
 public class ScheduleHeader {
 
-    public static List<NameValuePair> getHeader(){
-
+    public static List<NameValuePair> getHeader() {
 
         return null;
     }

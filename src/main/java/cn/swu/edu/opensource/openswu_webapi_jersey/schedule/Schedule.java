@@ -8,12 +8,11 @@ import java.util.List;
  * Email : sidingchan@gmail.com
  *
  * javabean：从教务系统获取的课程表对象。
- *
  */
 public class Schedule {
     private List<kbList> kbList;
 
-    public static class kbList{
+    public static class kbList {
         //课程名称
         private String kcmc;
         //总长度（课程的长度,如'1-18周'）

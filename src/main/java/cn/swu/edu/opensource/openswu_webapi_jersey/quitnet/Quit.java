@@ -19,15 +19,15 @@ public class Quit {
 
     private String response;
 
-    public void doQuit(String username,String password){
+    public void doQuit(String username, String password) {
         List<NameValuePair> entries = new ArrayList<>();
         entries.add(new BasicNameValuePair("username", username));
         entries.add(new BasicNameValuePair("password", password));
 
-        this.response = new Client().doPost(Constant.urlQuitNet,entries);
+        this.response = new Client().doPost(Constant.urlQuitNet, entries);
     }
 
-    public String getResponse(){
+    public String getResponse() {
         return this.response;
     }
 

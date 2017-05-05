@@ -16,7 +16,6 @@ public class ConnDb {
 
         Properties props = new Properties();
 
-
         try (InputStream in = this.getClass().getResourceAsStream("/resource/database.properties");
         ) {
             props.load(in);
@@ -26,7 +25,6 @@ public class ConnDb {
 //        ) {
 //            props.load(in);
 //        }
-
 
         String driver = props.getProperty("jdbc.driver");
         if (driver != null) {

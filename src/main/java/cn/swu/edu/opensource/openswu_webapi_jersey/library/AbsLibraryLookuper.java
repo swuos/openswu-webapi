@@ -15,33 +15,28 @@ import java.util.List;
  * <p>
  * Email : sidingchan@gmail.com
  */
-public abstract class AbsLibraryLookuper implements Lookup{
-
+public abstract class AbsLibraryLookuper implements Lookup {
 
     protected AbsLibraryLookuper() {
     }
 
-    protected Client loginInLibrarySystem(Parameter libraryParameter){
-        libraryParameter = (LibraryParameter)libraryParameter;
+    protected Client loginInLibrarySystem(Parameter libraryParameter) {
+        libraryParameter = (LibraryParameter) libraryParameter;
 
         List<NameValuePair> nameValuePairs = new ArrayList();
 
-        nameValuePairs.add(new BasicNameValuePair("username",libraryParameter.getSwuID()));
-        nameValuePairs.add(new BasicNameValuePair("password",libraryParameter.getPassword()));
-        nameValuePairs.add(new BasicNameValuePair("refer","space.jsp?do=home"));
-        nameValuePairs.add(new BasicNameValuePair("loginsubmit",""));
-        nameValuePairs.add(new BasicNameValuePair("formhash","a476d524"));
-        nameValuePairs.add(new BasicNameValuePair("backUrl",""));
-
+        nameValuePairs.add(new BasicNameValuePair("username", libraryParameter.getSwuID()));
+        nameValuePairs.add(new BasicNameValuePair("password", libraryParameter.getPassword()));
+        nameValuePairs.add(new BasicNameValuePair("refer", "space.jsp?do=home"));
+        nameValuePairs.add(new BasicNameValuePair("loginsubmit", ""));
+        nameValuePairs.add(new BasicNameValuePair("formhash", "a476d524"));
+        nameValuePairs.add(new BasicNameValuePair("backUrl", ""));
 
         Client client = new Client();
         String res;
-        res = client.doPost(Constant.urlLibrary,nameValuePairs);
+        res = client.doPost(Constant.urlLibrary, nameValuePairs);
         System.out.println(res);
         return client;
     }
-
-
-
 
 }

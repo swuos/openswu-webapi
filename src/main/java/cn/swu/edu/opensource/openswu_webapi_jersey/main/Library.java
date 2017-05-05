@@ -8,7 +8,12 @@ import cn.swu.edu.opensource.openswu_webapi_jersey.library.LibraryParameter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -30,6 +35,7 @@ public class Library {
     private Lookup lookup;
 
     private static Log LOGGER = LogFactory.getLog(Library.class);
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -43,7 +49,7 @@ public class Library {
                 lookup = new History();
                 break;
             default:
-                throw new ParameterException("the path /"+ module+" is wrong.");
+                throw new ParameterException("the path /" + module + " is wrong.");
         }
         String res = lookup.lookup(libraryParameter);
         return res;

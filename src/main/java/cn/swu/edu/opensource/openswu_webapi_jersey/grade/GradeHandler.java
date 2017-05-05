@@ -9,7 +9,6 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.grade;
  */
 public interface GradeHandler {
 
-
     /**
      * 计算GPA
      */
@@ -20,11 +19,9 @@ public interface GradeHandler {
      */
     public double getSum(TotalInfo totalInfo);
 
-
     /**
      * 计算平均分
      */
     public double getAverage(TotalInfo totalInfo);
-
 
 }

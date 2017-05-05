@@ -13,7 +13,6 @@ public class SwuGrades {
     // 预留
     private GradeHandler gradeHandler;
 
-
     public SwuGrades(Client client) {
 //        this.client = client;
         this.gradesLookuper = new GradesLookuper(client);

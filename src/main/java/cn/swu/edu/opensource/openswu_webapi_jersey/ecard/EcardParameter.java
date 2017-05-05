@@ -31,7 +31,6 @@ public class EcardParameter implements Parameter {
         this.cardno = cardno;
     }
 
-
     @Override
     public String getPassword() {
         return password;
@@ -40,7 +39,6 @@ public class EcardParameter implements Parameter {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     @Override
     public String getSwuID() {

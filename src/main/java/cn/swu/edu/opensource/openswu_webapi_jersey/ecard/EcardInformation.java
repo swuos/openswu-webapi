@@ -7,7 +7,6 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.ecard;
  */
 public class EcardInformation {
 
-
     private String time;
     private String type;
     private String frequency;

@@ -47,13 +47,13 @@ public class Constant {
     public static final String urlGradeSearch = "http://jw.swu.edu.cn/jwglxt/cjcx/cjcx_cxDgXscj.html?" +
             "doType=query&gnmkdmKey=N305005&sessionUserKey=";
     //查询课表地址
-    public static final String urlScheduleSearch ="http://jw.swu.edu.cn/jwglxt/kbcx/xskbcx_cxXsKb.html?" +
+    public static final String urlScheduleSearch = "http://jw.swu.edu.cn/jwglxt/kbcx/xskbcx_cxXsKb.html?" +
             "gnmkdmKey=N253508&sessionUserKey=";
     //退网地址
-    public static final String urlQuitNet="http://service.swu.edu.cn/fee/remote_logout2.jsp";
+    public static final String urlQuitNet = "http://service.swu.edu.cn/fee/remote_logout2.jsp";
 
     //查询个人基本信息
-    public static final String  urlPersonalInfo ="http://jw.swu.edu.cn/jwglxt/xsxxxggl/xsgrxxwh_cxXsgrxx.html?"+
+    public static final String urlPersonalInfo = "http://jw.swu.edu.cn/jwglxt/xsxxxggl/xsgrxxwh_cxXsgrxx.html?" +
             "gnmkdmKey=N100801&sessionUserKey=";
 
     // 查询校园卡个人信息
@@ -65,7 +65,6 @@ public class Constant {
     // 图书馆登录
     public static final String urlLibrary = "http://mylib.swu.edu.cn/do.jsp?ac=c64db6a3accfd5d750e9b26c1ad46d76&ref";
     // 图书馆借阅历史
-
 
 }
 

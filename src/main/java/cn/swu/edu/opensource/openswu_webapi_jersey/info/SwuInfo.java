@@ -1,10 +1,10 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.info;
 
 import cn.swu.edu.opensource.openswu_webapi_jersey.constant.Constant;
-import cn.swu.edu.opensource.openswu_webapi_jersey.login.LoginToEms;
-import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Lookup;
 import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
+import cn.swu.edu.opensource.openswu_webapi_jersey.login.LoginToEms;
+import cn.swu.edu.opensource.openswu_webapi_jersey.utils.Client;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -30,15 +30,18 @@ public class SwuInfo implements Lookup {
         this.personalInfo = lookup(parameter);
     }
 
-    public String getInfo(){
+    public String getInfo() {
         return this.personalInfo;
     }
 
     public String lookup(Parameter parameter) {
         //转换类型
         InfoParameter infoParam = null;
-        if (parameter instanceof InfoParameter) infoParam = (InfoParameter) parameter;
-        else return "";
+        if (parameter instanceof InfoParameter) {
+            infoParam = (InfoParameter) parameter;
+        } else {
+            return "";
+        }
 
         //加入POST DATA
         List<NameValuePair> nameValuePair = new ArrayList<>();
@@ -46,13 +49,13 @@ public class SwuInfo implements Lookup {
         nameValuePair.add(new BasicNameValuePair("czdmKey", "00"));
 
         //POST 返回的是html格式，需要手动处理格式
-        String response = this.client.doPost(Constant.urlPersonalInfo+infoParam.getSwuID()+"&_t="+System.currentTimeMillis(), nameValuePair);
+        String response = this.client.doPost(Constant.urlPersonalInfo + infoParam.getSwuID() + "&_t=" + System.currentTimeMillis(), nameValuePair);
 
         String ret = formatInfo(response);
         return ret;
     }
 
-    String formatInfo(String str){
+    String formatInfo(String str) {
         //使用正则表达式 将返回格式是html的str字符串 转换为json类型
 
         /*m1和m2都对str这个字符串同步进行正则匹配
@@ -75,95 +78,96 @@ public class SwuInfo implements Lookup {
         //匹配到的属性的值例如 计信院、222014321、重庆市
         String value;
         //返回值，类型是json
-        String ret="{";
+        String ret = "{";
         //将网页上的拼音属性名att替换成英文的
         String name;
 
-        while(m1.find()&&m2.find(m1.end())){
+        while (m1.find() && m2.find(m1.end())) {
             //每匹配到一个参数
-            att= m1.group(1);
-            value= m2.group(1);
+            att = m1.group(1);
+            value = m2.group(1);
 
-            if(att.equals(""))continue;
+            if (att.equals("")) continue;
 
-            switch (att){
+            switch (att) {
                 case "学号":
-                    name="SwuID";
+                    name = "SwuID";
                     break;
                 case "姓名":
-                    name="name";
+                    name = "name";
                     break;
                 case "性别":
-                    name="gender";
+                    name = "gender";
                     break;
                 case "证件号码":
-                    name="IDNumber";
+                    name = "IDNumber";
                     break;
                 case "出生日期":
-                    name="birthday";
+                    name = "birthday";
                     break;
                 case "民族":
-                    name="nation";
+                    name = "nation";
                     break;
                 case "政治面貌":
-                    name="political";
+                    name = "political";
                     break;
                 case "籍贯":
-                    name="origin";
+                    name = "origin";
                     break;
                 case "户口所在地":
-                    name="locition";
+                    name = "locition";
                     break;
                 case "年级":
-                    name="grade";
+                    name = "grade";
                     break;
                 case "学院名称":
-                    name="college";
+                    name = "college";
                     break;
                 case "专业名称":
-                    name="major";
+                    name = "major";
                     break;
                 case "班级名称":
-                    name="className";
+                    name = "className";
                     break;
                 case "毕业中学":
-                    name="graduation";
+                    name = "graduation";
                     break;
                 //case "手机号码":
                 //    name="phoneNum";
                 //    break;
                 case "固定电话":
-                    name="phoneNum";
+                    name = "phoneNum";
                     break;
                 case "家庭地址":
-                    name="familyLocation";
+                    name = "familyLocation";
                     break;
                 case "出生地":
-                    name="birthplace";
+                    name = "birthplace";
                     break;
                 case "系名称":
-                    name="department";
+                    name = "department";
                     break;
                 case "学生类别":
-                    name="englishLevel";
+                    name = "englishLevel";
                     break;
                 case "考生号":
-                    name="examNumber";
+                    name = "examNumber";
                     break;
                 case "入学总分":
-                    name="graduationScore";
+                    name = "graduationScore";
                     break;
                 default:
-                    name="";
-                    value="";
+                    name = "";
+                    value = "";
                     break;
             }
             //构建一行记录
-            if(!name.equals(""))
-                ret=ret+"\""+name+"\":\""+value+"\",";
+            if (!name.equals("")) {
+                ret = ret + "\"" + name + "\":\"" + value + "\",";
+            }
         }
         //删除多余的逗号，并添加后花括号
-        ret=ret.substring(0,ret.length()-1)+"}";
+        ret = ret.substring(0, ret.length() - 1) + "}";
 
         return ret;
     }

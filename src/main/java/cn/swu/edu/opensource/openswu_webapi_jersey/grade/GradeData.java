@@ -8,7 +8,6 @@ import java.util.List;
  * 用于Gson解析json数据的 POJO
  */
 
-
 public class GradeData {
     private List<Items> items;
 

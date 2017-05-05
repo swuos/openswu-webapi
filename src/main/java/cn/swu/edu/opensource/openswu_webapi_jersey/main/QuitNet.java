@@ -23,12 +23,10 @@ public class QuitNet {
 
     private static Log LOGGER = LogFactory.getLog(QuitNet.class);
 
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String getIt(QuitNetParam quitNetParam){
-
+    public String getIt(QuitNetParam quitNetParam) {
 
 //        new AuthenticationFilter().filter(cr);
         /* 需要立即退网 */
@@ -38,7 +36,7 @@ public class QuitNet {
         long d = quitNetParam.getDate();
         if (d == 0L) {
             Quit quiter = new Quit();
-            quiter.doQuit(quitNetParam.getUsername(),quitNetParam.getPassword());
+            quiter.doQuit(quitNetParam.getUsername(), quitNetParam.getPassword());
 
             /*  quiter.getResponse() 是信息中心在退网中产生的应答。
             *
@@ -48,17 +46,16 @@ public class QuitNet {
             return this.getResponse(quiter.getResponse());
         } else if (d == -1L) {
             /* 取消定时退网 */
-            if (QuitNetQueue.getInstance().removeItem(quitNetParam.getUsername())) {
+            if (QuitNetQueue.removeItem(quitNetParam.getUsername())) {
                 return "取消定时退网成功";
             }
             return "取消定时退网失败";
         } else {
         /* 需要延时退网 */
-            QuitNetQueue.getInstance().addItem(quitNetParam);
+            QuitNetQueue.addItem(quitNetParam);
 
             return "定时退网排队成功";
         }
-
 
     }
 
@@ -72,15 +69,16 @@ public class QuitNet {
      * @param 退网时信息中心返回的应答。
      * @return 我们返回给调用者的应答。
      */
-    private String getResponse(String response){
+    private String getResponse(String response) {
         int length = response.length();
 
-        if(length>800)
+        if (length > 800) {
             return "退网成功。";
-        else if(length>700)
+        } else if (length > 700) {
             return "用户名或密码错误。";
-        else
+        } else {
             return "您的账户当前没有登陆。";
+        }
 
     }
 }

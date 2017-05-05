@@ -1,11 +1,11 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.utils;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 /**
  * Created by csd on 2016/3/18.
@@ -22,7 +22,6 @@ public class ResultSetToJson {
 
             int columnCount = resultSetMetaData.getColumnCount();
 
-
             while (rs.next()) {
 
                 JsonObject jsonObject = new JsonObject();
@@ -38,7 +37,6 @@ public class ResultSetToJson {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return jsonArray.toString();
     }

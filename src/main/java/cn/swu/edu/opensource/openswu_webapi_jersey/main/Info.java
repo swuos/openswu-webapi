@@ -25,7 +25,6 @@ public class Info {
 
     private static Log LOGGER = LogFactory.getLog(Info.class);
 
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -35,9 +34,8 @@ public class Info {
 
         LOGGER.info("Info => " + infoParam.toString());
 
-            SwuInfo swuInfo  = new SwuInfo(infoParam);
-            response = swuInfo.getInfo();
-
+        SwuInfo swuInfo = new SwuInfo(infoParam);
+        response = swuInfo.getInfo();
 
         return new Gson().fromJson(response, PersonalInfo.class);
     }

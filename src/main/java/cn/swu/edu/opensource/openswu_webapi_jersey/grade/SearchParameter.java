@@ -7,9 +7,9 @@ package cn.swu.edu.opensource.openswu_webapi_jersey.grade;
 import cn.swu.edu.opensource.openswu_webapi_jersey.interfaces.Parameter;
 
 /**
- *  The POJO supported by MOXy
+ * The POJO supported by MOXy
  *
- *  该类作为成绩查询模块，被MOXy支持的javabean。
+ * 该类作为成绩查询模块，被MOXy支持的javabean。
  */
 
 public class SearchParameter implements Parameter {
@@ -22,7 +22,7 @@ public class SearchParameter implements Parameter {
 
     public SearchParameter() {
         // TODO Auto-generated constructor stub
-	}
+    }
 
     public SearchParameter(Integer xnm, Integer xqm, String swuID, String password) {
 
@@ -57,9 +57,9 @@ public class SearchParameter implements Parameter {
         this.swuID = swuID;
     }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
     public void setPassword(String password) {
         this.password = password;

@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by 开源协会 陈思定 on 2016/5/8.
  *
  * javabean:课表查询的javabean
- *
  */
 @XmlRootElement
 public class ScheduleParameter implements Parameter {

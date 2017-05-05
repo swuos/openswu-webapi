@@ -17,7 +17,6 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class ParameterExceptionMapper implements ExceptionMapper<ParameterException> {
 
-
     @Override
     public Response toResponse(ParameterException e) {
 

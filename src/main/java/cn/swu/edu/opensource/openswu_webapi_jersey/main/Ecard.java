@@ -21,7 +21,6 @@ import javax.ws.rs.core.MediaType;
 @Path("ecard")
 public class Ecard {
 
-
     private static Log LOGGER = LogFactory.getLog(QuitNet.class);
     private Lookup ecardLookup;
     private String response;
@@ -41,6 +40,5 @@ public class Ecard {
 
         return response == null ? "用户名或密码错误" : response;
     }
-
 
 }

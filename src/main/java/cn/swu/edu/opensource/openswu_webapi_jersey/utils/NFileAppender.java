@@ -1,7 +1,6 @@
 package cn.swu.edu.opensource.openswu_webapi_jersey.utils;
 
 import org.apache.log4j.DailyRollingFileAppender;
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.Priority;
 
 /**
